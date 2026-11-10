@@ -5,6 +5,7 @@ import { footerMessage } from './footer'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/website/',
+  lang: 'ru-RU',
   title: 'RubyxGames',
   description:
     'Документация RubyxGames PocketMine-MP для Minecraft Bedrock и RubyxNet.',
@@ -47,208 +48,211 @@ export default defineConfig({
     },
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Documentation', link: '/docs' },
-      { text: 'RubyxGames', link: '/docs/rubyx/' },
-      { text: 'Releases', link: 'https://github.com/RubyxGames/PocketMine-MP/releases' }
+      { text: 'Главная', link: '/' },
+      { text: 'Документация', link: '/docs' },
+      { text: 'Rubyx', link: '/docs/rubyx/' },
+      { text: 'Релизы', link: 'https://github.com/RubyxGames/PocketMine-MP/releases' }
     ],
+    docFooter: { prev: 'Назад', next: 'Далее' },
+    outline: { label: 'На этой странице' },
+    returnToTopLabel: 'Наверх',
+    sidebarMenuLabel: 'Меню',
+    darkModeSwitchLabel: 'Тема',
 
     sidebar: [
       {
-        text: 'Getting Started',
+        text: 'Начало работы',
         items: [
           {
-            text: 'Installation &amp; Updating',
+            text: 'Установка и обновление',
             link: '/docs/installation',
             collapsed: true,
             items: [
-              { text: 'Setup requirements', link: '/docs/installation/requirements' },
-              { text: 'Using the official installer (Linux/MacOS only)', link: '/docs/installation/get-dot-axolotl-pm-dot-org' },
-              { text: 'Using Docker (Linux only)', link: '/docs/installation/docker' },
-              { text: 'Installing/updating manually', link: '/docs/installation/installing-manually' },
-              { text: 'NetherNet Usage', link: '/docs/installation/nethernet-usage' },
-              { text: 'RubyxGames: GitHub Releases', link: '/docs/rubyx/installation' }
+              { text: 'Требования', link: '/docs/installation/requirements' },
+              { text: 'Официальный установщик (Linux/macOS)', link: '/docs/installation/get-dot-axolotl-pm-dot-org' },
+              { text: 'Docker (Linux)', link: '/docs/installation/docker' },
+              { text: 'Ручная установка', link: '/docs/installation/installing-manually' },
+              { text: 'NetherNet', link: '/docs/installation/nethernet-usage' },
+              { text: 'RubyxGames: релизы GitHub', link: '/docs/rubyx/installation' }
             ]
           },
-          { text: 'Migrating from PocketMine-MP (PMMP)', link: '/docs/migrating-from-pocketmine-mp' },
-          { text: 'Basic usage', link: '/docs/basic-usage' },
+          { text: 'Миграция с PMMP', link: '/docs/migrating-from-pocketmine-mp' },
+          { text: 'Базовое использование', link: '/docs/basic-usage' },
           {
-            text: 'Connecting',
+            text: 'Подключение',
             link: '/docs/connecting',
             collapsed: true,
             items: [
-              { text: 'Adding the server to Minecraft', link: '/docs/connecting/add-external-server' },
-              { text: 'Opening ports in your firewall', link: '/docs/connecting/configure-firewall' },
-              { text: 'Forwarding ports in your router', link: '/docs/connecting/portforward' }
+              { text: 'Добавить сервер в Minecraft', link: '/docs/connecting/add-external-server' },
+              { text: 'Порты в firewall', link: '/docs/connecting/configure-firewall' },
+              { text: 'Проброс портов на роутере', link: '/docs/connecting/portforward' }
             ]
           },
-          { text: 'Configuration', link: '/docs/configuration' },
-          { text: 'Plugins', link: '/docs/plugins' },
-          { text: 'Worlds', link: '/docs/worlds' },
-          { text: 'Resource Packs &amp; Behaviour Packs', link: '/docs/resourcepacks' },
+          { text: 'Конфигурация', link: '/docs/configuration' },
+          { text: 'Плагины', link: '/docs/plugins' },
+          { text: 'Миры', link: '/docs/worlds' },
+          { text: 'Ресурс- и behavior-паки', link: '/docs/resourcepacks' },
           {
-            text: 'Permissions',
+            text: 'Права',
             link: '/docs/permissions',
             collapsed: true,
             items: [
-              { text: 'List of built-in permissions', link: '/docs/core-permissions' }
+              { text: 'Встроенные permissions', link: '/docs/core-permissions' }
             ]
           },
-          { text: 'Contributing', link: '/docs/contributing' },
+          { text: 'Участие в разработке', link: '/docs/contributing' },
           {
-            text: 'Bugs &amp; Crashes',
+            text: 'Сбои и ошибки',
             link: '/docs/issues',
             collapsed: true,
             items: [
-              { text: 'Crashes', link: '/docs/issues/crashes' },
-              { text: 'Reporting Bugs', link: '/docs/issues/github-issues' }
+              { text: 'Краши', link: '/docs/issues/crashes' },
+              { text: 'Сообщить об ошибке', link: '/docs/issues/github-issues' }
             ]
           },
-          { text: 'Contact and Support', link: '/docs/contact' }
+          { text: 'Контакты и поддержка', link: '/docs/contact' }
         ]
       },
       {
-        text: 'Frequently Asked Questions &amp; Common Issues',
+        text: 'FAQ и типичные проблемы',
         items: [
           {
-            text: 'Installation',
+            text: 'Установка',
             link: '/docs/faq/installation',
             collapsed: true,
             items: [
-              { text: 'Failed loading opcache.so (or other PHP extensions)', link: '/docs/faq/installation/opcache.so' },
-              { text: 'PocketMine-MP.phar not found when running server', link: '/docs/faq/installation/pharnotfound' },
-              { text: 'Can’t install as user root', link: '/docs/faq/installation/rootuser' },
-              { text: 'Can I install on Windows XP?', link: '/docs/faq/installation/windowsxp' }
+              { text: 'Не грузится opcache.so', link: '/docs/faq/installation/opcache.so' },
+              { text: 'Не найден PocketMine-MP.phar', link: '/docs/faq/installation/pharnotfound' },
+              { text: 'Установка под root', link: '/docs/faq/installation/rootuser' },
+              { text: 'Windows XP', link: '/docs/faq/installation/windowsxp' }
             ]
           },
           {
-            text: 'Connecting',
+            text: 'Подключение',
             link: '/docs/faq/connecting',
             collapsed: true,
             items: [
-              { text: 'NetherNet common issues', link: '/docs/faq/connecting/nethernet-common-issues' },
-              { text: 'Can’t connect to the server after updating Minecraft', link: '/docs/faq/connecting/cantconnect' },
-              { text: 'What does “Opening server on 0.0.0.0:19132” mean?', link: '/docs/faq/connecting/defaultrouteip' },
-              { text: '“Login timeout” when attempting to connect', link: '/docs/faq/connecting/logintimeout' },
-              { text: 'RakLib Thread Blocked x.x.x.x for x seconds', link: '/docs/faq/connecting/raklibthreadblocked' },
-              { text: 'Stuck on “Locating server” or at downloading resource packs', link: '/docs/faq/connecting/stuckduringconnect' },
-              { text: 'VPN connection and gameplay issues', link: '/docs/faq/connecting/vpnproblems' },
-              { text: 'Minecraft can’t connect to a server on the same computer on Windows', link: '/docs/faq/connecting/win10localhostcantconnect' }
+              { text: 'Типичные проблемы NetherNet', link: '/docs/faq/connecting/nethernet-common-issues' },
+              { text: 'Нет подключения после обновления Minecraft', link: '/docs/faq/connecting/cantconnect' },
+              { text: '«Opening server on 0.0.0.0:19132»', link: '/docs/faq/connecting/defaultrouteip' },
+              { text: 'Login timeout', link: '/docs/faq/connecting/logintimeout' },
+              { text: 'RakLib Thread Blocked', link: '/docs/faq/connecting/raklibthreadblocked' },
+              { text: 'Зависание на resource packs', link: '/docs/faq/connecting/stuckduringconnect' },
+              { text: 'VPN и игра', link: '/docs/faq/connecting/vpnproblems' },
+              { text: 'localhost на Windows', link: '/docs/faq/connecting/win10localhostcantconnect' }
             ]
           },
           {
-            text: 'Playing',
+            text: 'Игра',
             link: '/docs/faq/playing',
             collapsed: true,
             items: [
-              { text: 'Why doesn’t X or Y gameplay feature work? Is it a bug?', link: '/docs/faq/playing/missingfeatures' },
-              { text: 'Can Java Edition clients connect to the server?', link: '/docs/faq/playing/playwithpc' }
+              { text: 'Нет ванильной механики — это баг?', link: '/docs/faq/playing/missingfeatures' },
+              { text: 'Java Edition клиенты', link: '/docs/faq/playing/playwithpc' }
             ]
           },
           {
-            text: 'Plugins',
+            text: 'Плагины',
             link: '/docs/faq/plugins',
             collapsed: true,
             items: [
-              { text: 'What does “Incompatible API version” mean when loading a plugin?', link: '/docs/faq/plugins/incompatibleapi' },
-              { text: 'I can’t get a <code>.phar</code> for a plugin. How do I create one?', link: '/docs/faq/plugins/makephar' },
-              { text: 'Can I run a plugin from source without creating a <code>.phar</code>?', link: '/docs/faq/plugins/usephpfiles' }
+              { text: 'Incompatible API version', link: '/docs/faq/plugins/incompatibleapi' },
+              { text: 'Как собрать .phar', link: '/docs/faq/plugins/makephar' },
+              { text: 'Плагин без .phar', link: '/docs/faq/plugins/usephpfiles' }
             ]
           },
           {
-            text: 'About PMMP & forks',
+            text: 'О PMMP и форках',
             link: '/docs/faq/about',
             collapsed: true,
             items: [
-              { text: 'What’s the difference between PMMP and PocketMine?', link: '/docs/faq/about/pocketmine-vs-pmmp' },
-              { text: 'Who is @shoghicp?', link: '/docs/faq/about/shoghicp' },
-              { text: 'Why PHP?', link: '/docs/faq/about/why-php' }
+              { text: 'PMMP и PocketMine', link: '/docs/faq/about/pocketmine-vs-pmmp' },
+              { text: 'Кто такой @shoghicp', link: '/docs/faq/about/shoghicp' },
+              { text: 'Почему PHP', link: '/docs/faq/about/why-php' }
             ]
           }
         ]
       },
       {
-        text: 'Developer Resources',
+        text: 'Разработчикам',
         items: [
           {
-            text: 'Plugin development docs',
+            text: 'Разработка плагинов',
             link: '/docs/developers/plugin-docs-index',
             collapsed: true,
             items: [
-              { text: 'API versioning', link: '/docs/developers/plugin-docs/api-version-spec' },
+              { text: 'Версии API', link: '/docs/developers/plugin-docs/api-version-spec' },
               {
-                text: 'Events',
+                text: 'События',
                 link: '/docs/developers/plugin-docs/events',
                 collapsed: true,
                 items: [
-                  { text: 'Using the <code>pocketmine\\event\\Listener</code> interface', link: '/docs/developers/plugin-docs/events/listener-interface' },
-                  { text: 'Event handler priority', link: '/docs/developers/plugin-docs/events/priority' }
+                  { text: 'Listener', link: '/docs/developers/plugin-docs/events/listener-interface' },
+                  { text: 'Приоритет обработчиков', link: '/docs/developers/plugin-docs/events/priority' }
                 ]
               },
-              { text: 'Inventory Transactions', link: '/docs/developers/plugin-docs/inventory-transactions' },
+              { text: 'Транзакции инвентаря', link: '/docs/developers/plugin-docs/inventory-transactions' },
               {
-                text: 'Plugin formats',
+                text: 'Форматы плагинов',
                 link: '/docs/developers/plugin-docs/plugin-formats',
                 collapsed: true,
                 items: [
-                  { text: 'Standard plugin types', link: '/docs/developers/plugin-docs/plugin-formats/standard' },
-                  { text: 'Development plugin types', link: '/docs/developers/plugin-docs/plugin-formats/development' },
-                  { text: 'Frequently Asked Questions', link: '/docs/developers/plugin-docs/plugin-formats/faq' }
+                  { text: 'Стандартные типы', link: '/docs/developers/plugin-docs/plugin-formats/standard' },
+                  { text: 'Dev-типы', link: '/docs/developers/plugin-docs/plugin-formats/development' },
+                  { text: 'FAQ', link: '/docs/developers/plugin-docs/plugin-formats/faq' }
                 ]
               },
-              { text: '<code>plugin.yml</code> fields', link: '/docs/developers/plugin-docs/plugin-manifest' }
+              { text: 'Поля plugin.yml', link: '/docs/developers/plugin-docs/plugin-manifest' }
             ]
           },
           {
-            text: 'Core internal development',
+            text: 'Разработка ядра',
             link: '/docs/developers/internals-docs-index',
             collapsed: true,
             items: [
-              { text: 'How to add a new <em>vanilla</em> block', link: '/docs/developers/internals-docs/adding-vanilla-blocks' },
-              { text: 'Implementing new Minecraft version support', link: '/docs/developers/internals-docs/updating-minecraft-protocol' }
+              { text: 'Новый ванильный блок', link: '/docs/developers/internals-docs/adding-vanilla-blocks' },
+              { text: 'Новая версия Minecraft', link: '/docs/developers/internals-docs/updating-minecraft-protocol' }
             ]
           },
-          { text: 'Threading in PHP - WTF?', link: '/docs/developers/threading-in-php-wtf' }
+          { text: 'Threading in PHP — WTF?', link: '/docs/developers/threading-in-php-wtf' }
         ]
       },
       {
-        text: 'RubyxGames (fork-specific)',
+        text: 'RubyxGames',
         items: [
-          { text: 'Overview', link: '/docs/rubyx/' },
-          { text: 'Releases & manual install', link: '/docs/rubyx/installation' },
+          { text: 'Обзор', link: '/docs/rubyx/' },
+          { text: 'Установка с релиза', link: '/docs/rubyx/installation' },
           {
             text: 'Changelog 1.0.0',
             link: 'https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md'
           },
-          { text: 'Core updates digest', link: '/docs/rubyx/core-updates' },
-          { text: 'Plugin API notes', link: '/docs/rubyx/plugin-api' },
-          { text: 'DDUI plugin API', link: '/docs/rubyx/plugin-api-ddui' },
+          { text: 'Обновления ядра', link: '/docs/rubyx/core-updates' },
+          { text: 'Plugin API', link: '/docs/rubyx/plugin-api' },
+          { text: 'DDUI API', link: '/docs/rubyx/plugin-api-ddui' },
           {
-            text: 'Operations',
+            text: 'Эксплуатация',
             collapsed: true,
             items: [
               { text: 'Ops, health, shutdown', link: '/docs/rubyx/ops' },
-              { text: 'NetherNet (Rubyx notes)', link: '/docs/rubyx/nethernet' },
-              { text: 'Multiworld', link: '/docs/rubyx/multiworld' },
+              { text: 'NetherNet', link: '/docs/rubyx/nethernet' },
+              { text: 'Мультимиры', link: '/docs/rubyx/multiworld' },
               { text: 'Resource packs', link: '/docs/rubyx/resource-packs' },
               { text: 'Adaptive QoS', link: '/docs/rubyx/adaptive-qos' },
-              { text: 'Session recording', link: '/docs/rubyx/session-recording' },
-              { text: 'Production checklist', link: '/docs/rubyx/prod-release-5.52-checklist' }
+              { text: 'Session recording', link: '/docs/rubyx/session-recording' }
             ]
           },
           {
             text: 'DDUI',
             collapsed: true,
             items: [
-              { text: 'Implementation status', link: '/docs/rubyx/DDUI_IMPLEMENTATION_STATUS' },
+              { text: 'Статус', link: '/docs/rubyx/DDUI_IMPLEMENTATION_STATUS' },
               { text: 'Wire contract', link: '/docs/rubyx/DDUI_WIRE_CONTRACT' },
               { text: 'Theming', link: '/docs/rubyx/DDUI_THEMING' },
               { text: 'Manual smoke', link: '/docs/rubyx/DDUI_MANUAL_SMOKE' },
-              { text: 'Baseline', link: '/docs/rubyx/DDUI_BASELINE' },
-              { text: 'MineChat / PostSystem', link: '/docs/rubyx/MINECHAT_DDUI_POSTSYSTEM_SCREEN' }
+              { text: 'Baseline', link: '/docs/rubyx/DDUI_BASELINE' }
             ]
           },
-          { text: 'Network audit (vs Axolotl)', link: '/docs/rubyx/AXOLOTL_NETWORK_AUDIT' }
+          { text: 'Сетевой аудит', link: '/docs/rubyx/AXOLOTL_NETWORK_AUDIT' }
         ]
       }
     ],

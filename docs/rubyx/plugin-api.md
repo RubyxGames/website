@@ -4,7 +4,7 @@
 
 Core loads directory plugins (`plugin.yml` + `src/`) via `FolderPluginLoader`. DevTools is **not** required to run folder plugins; keep DevTools only for packaging (`makeplugin` / extract).
 
-## Forms (Wave 7 / #45)
+## Forms (#45)
 
 Core FormAPI builders (capability `form-api`):
 
@@ -26,7 +26,7 @@ MiniGameBase form classes remain for existing plugins; new code should prefer `p
 
 Manual check: open/close each form type, invalid responses should log `FormValidationException` without crashing.
 
-## Plugin data version (Wave 7 / #50)
+## Plugin data version (#50)
 
 Opt-in schema versioning (capability `plugin-data-version`):
 
@@ -38,18 +38,18 @@ data-version: 2
 Or override `PluginBase::getPreferredDataVersion()` / `migrateData(int $from, int $to)`.
 Stored in `plugin_data/<Plugin>/data-version`. `0` (default) disables the check.
 
-## Player data XUID (Wave 7 / #47)
+## Player data XUID (#47)
 
 Authenticated saves dual-write `players/<name>.dat` and `players/xuid/<xuid>.dat`.
 Load prefers the XUID file, then falls back to the name file (capability `xuid-playerdata`).
 
-## Unknown items (Wave 7 / #49)
+## Unknown items (#49)
 
-Unrecognized item types become `UnknownItem` and keep original `SavedItemData` through save (capability `unknown-item`). Network may still show info_update. Unknown **block** palettes are preserved via `UnknownBlockStateStore` (capability `unknown-block`, Wave 10).
+Unrecognized item types become `UnknownItem` and keep original `SavedItemData` through save (capability `unknown-item`). Network may still show info_update. Unknown **block** palettes are preserved via `UnknownBlockStateStore` (capability `unknown-block`).
 
-## Camera (Wave 9–11 / #43)
+## Camera (#43)
 
-Capability `camera-instruction`. Shake / fade / clear, presets / set / FOV / target, plus Wave 11 aim-assist / spline / attach:
+Capability `camera-instruction`. Shake / fade / clear, presets / set / FOV / target, плюс aim-assist / spline / attach:
 
 ```php
 use pocketmine\color\Color;
@@ -77,15 +77,15 @@ $player->sendCameraAimAssist($presetId, $viewAngle, $distance, $targetMode, $act
 
 Fade times are seconds.
 
-## Movement guard (Wave 10–11 / #44 lite)
+## Movement guard (#44 lite)
 
 Capability `movement-guard`. Config `player.movement.*` in `pocketmine.yml` (max blocks per move / per tick, `send-prediction-correction`). Violations rubberband via `MODE_RESET` and optionally `CorrectPlayerMovePredictionPacket`. Not full server-auth physics.
 
-## Unknown blocks (Wave 10 / #49)
+## Unknown blocks (#49)
 
 Unrecognized blockstates keep original `BlockStateData` in `UnknownBlockStateStore` for LevelDB palette round-trip (capability `unknown-block`). Network may still show as unknown / info_update visually.
 
-## Datapacks recipes + item tags (Wave 10–11 / #57 lite)
+## Datapacks recipes + item tags (#57 lite)
 
 Capability `datapacks`. Place PM-format recipe JSON under `datapacks/<name>/recipes/` or `worlds/<world>/datapacks/<name>/recipes/` (same shapes as bedrock-data recipes). Item tags: `…/tags/items/*.json`. Loot (PM-native, not Java): `…/loot_tables/*.json` → `DatapackLootRegistry::roll($name)`. Optional `pack.mcmeta` is logged. Not vanilla Java advancements/predicates.
 

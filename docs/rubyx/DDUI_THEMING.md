@@ -4,11 +4,11 @@ Three UI layers on Rubyx — do not mix them:
 
 | Layer | Use for | Customization |
 |-------|---------|---------------|
-| **JSON UI + RP** (`server_form.json`, `server_form_post.json`) | Rich layouts (MineChat, HUD) | Full layout; not DDUI |
+| **JSON UI + RP** (`server_form.json`, …) | Сложные layout (HUD, чат) | Полный layout; не DDUI |
 | **DDUI Ore UI** (`minecraft:custom_form`) | Reactive menus, polls | `ddui/styling/*.json`, root `styleId` only (panel/labels/fields) |
 | **JSON fallback** | Old clients / MessageBox | ModalForm |
 
-MineChat production UI stays **`ui_mode: postsystem`** (JSON). DDUI themes are for `/ddui`, plugins, and future simple forms.
+Продуктовые плагины с богатым JSON UI остаются на **ModalForm + resource pack**. DDUI-темы — для `/ddui`, новых плагинов и простых реактивных форм.
 
 ## What Bedrock allows (DDUI)
 
@@ -26,9 +26,8 @@ ddui:
   themes:
     rubyx:classic:
       style-id: ""                    # Ore default
-    rubyx:postsystem:
-      style-id: minechat:postsystem
-      resource-pack: MineChat_PostSystem   # validation hint only
+    rubyx:custom:
+      style-id: rubyx:custom
 ```
 
 - **`style-id` empty** — omit `styleId` on the wire (vanilla Ore look).
@@ -42,7 +41,7 @@ Path: `ddui/styling/<any>.json`
 {
   "format_version": "beta",
   "minecraft:ui-style": {
-    "description": { "identifier": "minechat:postsystem" },
+    "description": { "identifier": "rubyx:custom" },
     "components": {
       "minecraft:form_panel": { "image": "textures/post_ui/panel.png", "padding": [8, 8, 8, 8] },
       "minecraft:form_label": { "color": "#e6d6b0", "shadow": false },
@@ -63,7 +62,7 @@ Path: `ddui/styling/<any>.json`
 
 Textures need `.png` paths and optional `textures/.../*.json` nineslice metadata.
 
-Example in repo: `resource_packs/MineChat_PostSystem/ddui/styling/minechat_postsystem.json`.
+Файл кладётся в resource pack участника стека: `ddui/styling/<name>.json`.
 
 ## Plugin API
 
@@ -93,7 +92,7 @@ Or on the builder:
 Registry:
 
 ```php
-DduiThemeRegistry::resolveStyleId('rubyx:postsystem'); // minechat:postsystem
+DduiThemeRegistry::resolveStyleId('rubyx:custom');
 DduiThemeRegistry::getDiscoveredStyles();
 DduiThemeRegistry::getPresets();
 ```

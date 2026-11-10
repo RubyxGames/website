@@ -9,22 +9,22 @@ hero:
   tagline: Ядро Minecraft Bedrock для RubyxNet — мультипротокол, NetherNet, DDUI и эксплуатация в проде.
   actions:
     - theme: brand
-      text: Documentation
+      text: Документация
       link: /docs
     - theme: alt
-      text: Rubyx-specific docs
+      text: Rubyx
       link: /docs/rubyx/
     - theme: alt
-      text: Download release
+      text: Скачать
       link: https://github.com/RubyxGames/PocketMine-MP/releases/latest
 
 features:
-  - title: Полная документация
-    details: Установка, FAQ, плагины, миры — руководство оператора и разработчика
-  - title: Multi-protocol Bedrock
-    details: Several client versions on one server (Rubyx 1.0.0+)
-  - title: NetherNet & RakNet
-    details: WebRTC for modern clients; Rubyx production notes in /docs/rubyx/
-  - title: DDUI & operations
-    details: Plugin UI, session recording, healthcheck, prod checklists
+  - title: Руководство оператора
+    details: Установка, FAQ, плагины, миры, права
+  - title: Мультипротокол Bedrock
+    details: Несколько версий клиента на одном сервере
+  - title: NetherNet и RakNet
+    details: WebRTC и совместимость со старыми клиентами
+  - title: DDUI и ops
+    details: UI плагинов, метрики, session recording, чеклисты
 ---

@@ -1,9 +1,8 @@
 ---
-title: "Development plugin types"
+title: Development plugin types
 outline: deep
 description: Plugin types for development in Axolotl-PM. Currently supports Folder (with DevTools) and Script (single .php file). Not recommended for distribution.
 ---
-
 # Development plugin types
 
 Since the standard types of plugins are usually pretty difficult to work with while developing a plugin, there are more types of plugins that developers can use, but these are **not** recommended for distribution.

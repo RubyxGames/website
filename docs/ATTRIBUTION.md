@@ -1,12 +1,12 @@
 ---
-title: Documentation sources
+title: Источники документации
 ---
 
-# Attribution
+# Источники
 
-The **Getting Started**, **FAQ**, and **Developer Resources** sections are copied from the [Axolotl-PM website](https://github.com/axolotl-pm/website) (`docs/` tree, VitePress layout and theme styles).
+Разделы **Начало работы**, **FAQ** и **Разработчикам** основаны на документации [Axolotl-PM](https://github.com/axolotl-pm/website) (текст адаптирован и переведён на русский).
 
-- Upstream docs: [axolotl-pm.org/docs](https://axolotl-pm.org/docs/)
-- RubyxGames-specific markdown: [`/docs/rubyx/`](/docs/rubyx/) (from `rubyx-server/docs/`)
+- Upstream: [axolotl-pm.org/docs](https://axolotl-pm.org/docs/)
+- Дополнения RubyxGames: [`/docs/rubyx/`](/docs/rubyx/)
 
-When upstream Axolotl docs change, refresh by re-cloning `axolotl-pm/website` and merging `docs/` (keep `docs/rubyx/` and this file).
+Обновление upstream: `pnpm sync:axolotl-docs`, затем `scripts/translate_docs_ru.py`.

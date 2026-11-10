@@ -2,7 +2,7 @@
 
 ## In-game test menu
 
-Operators with `pocketmine.command.ddui`: **`/ddui`** — picker menu (JSON SimpleForm) opening DDUI screens: controls, reactive demo, **NPC dialog** (`DduiNpcDialogForm`), **MineChat PostSystem** (`DduiPostSystemChatForm`, demo of `plugins/DbDGame/PostSystem.zip` flow).
+Операторы с `pocketmine.command.ddui`: **`/ddui`** — меню (JSON SimpleForm) с тестовыми DDUI-экранами: контролы, reactive demo, **NPC dialog** (`DduiNpcDialogForm`).
 
 ## Feature detection
 

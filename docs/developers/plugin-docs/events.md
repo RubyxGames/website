@@ -1,12 +1,11 @@
 ---
-title: "Events"
+title: Events
 outline: deep
 description: Events system in Axolotl-PM.
 ---
-
 # Events
 
-Axolotl-PM has an events system which allows plugins to react to, modify the outcome of, and prevent the result of events.
+RubyxGames has an events system which allows plugins to react to, modify the outcome of, and prevent the result of events.
 
 ## How it works
 
@@ -15,7 +14,7 @@ Axolotl-PM has an events system which allows plugins to react to, modify the out
 3. The event takes place (or does not take place if cancelled) as defined by the object which contains the event information.
 
 ::: info Note
-All event handlers are currently executed **before** the event takes place. This is a common pitfall of Axolotl-PM plugin developers - when an event handler is executed, the actual event has not yet taken place.
+All event handlers are currently executed **before** the event takes place. This is a common pitfall of RubyxGames plugin developers - when an event handler is executed, the actual event has not yet taken place.
 :::
 
 ## Handling events

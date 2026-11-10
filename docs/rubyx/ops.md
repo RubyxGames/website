@@ -1,6 +1,6 @@
-# Ops: limits, health, shutdown
+# Ops: лимиты, health, shutdown
 
-Wave 6 security/ops helpers for production (Docker/K8s).
+Инструменты эксплуатации и безопасности для продакшена (Docker/K8s).
 
 ## Abuse limits (#39)
 
@@ -106,13 +106,13 @@ metrics:
 
 When enabled with `file: true`, writes `metrics.prom` each second (TPS, load, players, memory, tick counter, freeze flag, per-world chunks/entities/tick-ms). Optional scrape bind serves `GET /metrics`. Capability: `prometheus-metrics`.
 
-## World save durability (Wave 8–10)
+## World save durability 
 
 - `world.save.fsync` — fflush+fsync for `Filesystem::safeFilePutContents`.
 - `world.save.region-fsync` — region file fsync on close.
 - `world.save.leveldb-sidecar` — after each LevelDB chunk write batch, updates `db/LAST_FLUSH` via safe write (JSON `{unix,tick,chunk_x,chunk_z}`; legacy plain unix still readable). Extension has no fsync/WAL API — **WAL is platform wontfix**. Sidecar is forensics/monitoring only (age in Prometheus / `health.status`); it does not replay chunks after a crash.
 
-## Movement guard (Wave 10–11)
+## Movement guard 
 
 ```yaml
 player:
@@ -125,7 +125,7 @@ player:
 
 Safety rubberband (`MODE_RESET`) plus optional `CorrectPlayerMovePredictionPacket` (capability `movement-guard`). Not full prediction AC.
 
-## Light updates (Wave 11)
+## Light updates 
 
 ```yaml
 world:
@@ -135,11 +135,11 @@ world:
 
 Chunk light **population** remains async (`LightPopulationTask`) with loaded 3×3 neighbor terrain. Deferred vs immediate execute counts are exported as Prometheus counters. Full off-thread incremental light is **wontfix** (World races).
 
-## Metrics histograms (Wave 10–11)
+## Metrics histograms 
 
 Prometheus exposition includes `pmmp_tick_duration_seconds` and `pmmp_world_tick_duration_seconds` histograms, plus `pmmp_world_leveldb_flush_age_seconds` when LAST_FLUSH exists. `health.status` may include `flush_age_s:world=N`.
 
-## Plugin security scan (Wave 10–11 / #40 lite+)
+## Plugin security scan (#40 lite+)
 
 ```yaml
 plugins:

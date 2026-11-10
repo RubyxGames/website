@@ -1,9 +1,8 @@
 ---
-title: "Inventory Transactions"
+title: Inventory Transactions
 outline: deep
 description: Inventory Transactions are a system used in Axolotl-PM for grouping changes to inventories.
 ---
-
 # Inventory Transactions
 
 Inventory transactions are a system used to group changes to inventories, dropped items or other item stack locations. This system is used to provide a coherent view of activity in inventories caused by players, and to prevent cheating or creating/destroying items in multiplayer races.

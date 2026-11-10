@@ -14,18 +14,13 @@ Target: Bedrock **1.26.60**, PocketMine fork `rubyx-server`.
 
 `DduiSupport::protocolTier()` / `Player::getDduiProtocolTier()` — see `plugin-api-ddui.md`. Core session manager picks `dataInstanceId` and `CloseScreen` per client protocol.
 
-## Plugin example
-
-`RubyxMessenger` — **`ui_mode: postsystem`** (JSON MineChat); DDUI only via `/minechat live`.  
-Custom PostSystem DDUI screen (MINECHAT + push): design in [`MINECHAT_DDUI_POSTSYSTEM_SCREEN.md`](MINECHAT_DDUI_POSTSYSTEM_SCREEN.md) (Phase 0 not started).
-
 ## Theme API (phase 1)
 
 `DduiThemeRegistry`, `DduiLayoutBuilder::applyThemePreset()`, `/ddui` theme demo — see `docs/DDUI_THEMING.md`.
 
 ## Not planned (MVP+)
 
-- Generic CustomForm → legacy JSON fallback for arbitrary `DduiForm` (only MessageBox has ModalForm fallback; plugins use their own fallback like MineChat PostSystem)
+- Generic CustomForm → legacy JSON fallback for arbitrary `DduiForm` (only MessageBox has ModalForm fallback; плагины при необходимости используют JSON UI)
 - DDUI-native hub as sole `/ddui` launcher (SimpleForm picker kept — hub layout experimental)
 - Binary packet encode/decode round-trip in core PHPUnit (no `pmmp/encoding` in server autoload)
 

@@ -8,8 +8,6 @@ Vanilla DDUI screens ship in the Bedrock client (not in server resource packs). 
 |--------|------------|-----------------------------------|
 | Message box (two-button dialog) | `minecraft:message_box` | `message_box_data` |
 | Custom form (DDUI) | `minecraft:custom_form` | `custom_form_data` |
-| MineChat PostSystem (RP) | `minechat:postsystem_chat` | `postsystem_chat_data` |
-
 **Data store namespace** = substring before `:` in `screenId` (e.g. `minecraft` for `minecraft:message_box`).
 
 ### Per-instance property names (protocol ≥ 1.26.20)

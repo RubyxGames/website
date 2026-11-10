@@ -1,6 +1,6 @@
-# Обновления ядра Rubyx (Wave 1–17)
+# Справочник изменений ядра Rubyx
 
-Полный справочник по тому, что добавлено в ядро по curated-roadmap (идеи → реализация): **зачем фича**, **как устроена**, **как включить и вызывать**.
+Справочник возможностей ядра RubyxGames: зачем фича, как устроена, как включить и вызывать.
 
 Тематические гайды (если нужна ещё большая глубина по одной теме):
 
@@ -16,8 +16,7 @@
 | `docs/plugin-api-ddui.md` | DDUI plugin API |
 | `docs/DDUI_WIRE_CONTRACT.md` | Пакеты / screenId / data store |
 | `docs/DDUI_THEMING.md` | RP `ddui/styling`, Theme API |
-| `docs/MINECHAT_DDUI_POSTSYSTEM_SCREEN.md` | Кастомный экран MineChat (дизайн) |
-| `changelogs/5.52.md` | Changelog по волнам + DDUI |
+| [changelogs/1.0.0.md](https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md) | Changelog релиза |
 
 ---
 
@@ -52,11 +51,11 @@ $all = $caps->getAll(); // list<string>
 
 `folder-plugins`, `folder-packs`, `nethernet`, `session-record`, `adaptive-qos`, `world-clone`, `multiworld-commands`, `multiworld-module`, `worldedit`, `form-api`, `plugin-data-version`, `xuid-playerdata`, `unknown-item`, `tick-freeze`, `prometheus-metrics`, `camera-instruction`, `unknown-block`, `movement-guard`, `datapacks`, `plugin-security-scan`.
 
-Новые волны добавляют id при старте сервера в `Server` (register рядом с остальными).
+Новые версии ядра регистрируют id при старте сервера в `Server` (register рядом с остальными).
 
 ---
 
-## Wave 1 — сеть, протоколы, транспорты
+## Сеть, протоколы и транспорты
 
 ### Multi-version Bedrock
 
@@ -105,11 +104,11 @@ $player->transfer("play.example.com", 19132);
 // PlayerTransferEvent — reloadWorld, GatheringJoinInfo и т.д.
 ```
 
-Для NetherNet-назначения `host:port` должны указывать на **signaling** endpoint цели. Полный seamless WebRTC handoff между серверами в этой волне не обещан.
+Для NetherNet-назначения `host:port` должны указывать на **signaling** endpoint цели. Полный seamless WebRTC handoff между серверами пока не поддерживается полностью.
 
 ---
 
-### Folder resource packs (база Wave 1)
+### Folder resource packs
 
 **Зачем.** Разработчикам удобнее править пак как папку с `manifest.json`, а не только как `.zip`/`.mcpack`.
 
@@ -121,11 +120,11 @@ pack_chunk_size_kb: 128
 pack_chunk_concurrency: 2
 ```
 
-Capability: `folder-packs` (полная система паков развивается в Wave 3).
+Capability: `folder-packs` (см. раздел resource packs).
 
 ---
 
-## Wave 2 — Adaptive QoS и session recording
+## Adaptive QoS и session recording
 
 ### Adaptive QoS
 
@@ -181,7 +180,7 @@ Permission: `pocketmine.command.sessionrecord`. Capability: `session-record`.
 
 ---
 
-## Wave 3 — продвинутые resource packs
+## Resource packs
 
 Конфиг: `resource_packs.yml`. Docs: `docs/resource-packs.md`.
 
@@ -259,7 +258,7 @@ Permission: `pocketmine.command.resourcepacks`.
 
 ---
 
-## Wave 4 — миры и чанки
+## Миры и чанки
 
 Docs: `docs/multiworld.md`. Capabilities: `world-clone`, `multiworld-commands`.
 
@@ -345,7 +344,7 @@ Spawn-чанки и чанки с viewers/loaders не выгружаются. �
 
 ---
 
-## Wave 5 — плагины: загрузка и lifecycle
+## Плагины: загрузка и lifecycle
 
 Docs: `docs/plugin-api.md`.
 
@@ -398,7 +397,7 @@ plugins:
 
 ---
 
-## Wave 6 — ops и security
+## Ops и безопасность
 
 Docs: `docs/ops.md`.
 
@@ -479,7 +478,7 @@ shutdown:
 
 ---
 
-## Wave 7 — UI и данные игрока/предметов
+## UI и данные игрока
 
 ### FormAPI (#45)
 
@@ -506,7 +505,7 @@ $form->send($player);
 
 Capability: `form-api`.
 
-JSON-формы (`ModalForm` / `CustomForm` через `sendForm`) **закрываются** на каждое действие клиента. Для **реактивного UI** без пересборки см. **Wave 17 — DDUI**.
+JSON-формы (`ModalForm` / `CustomForm` через `sendForm`) **закрываются** на каждое действие клиента. Для **реактивного UI** без пересборки см. раздел **DDUI** ниже.
 
 ---
 
@@ -537,7 +536,7 @@ Capability: `plugin-data-version`.
 
 Load сначала ищет XUID-файл, потом name. Offline / без XUID — как раньше по имени.
 
-Capability: `xuid-playerdata`. Полный SQL/Redis store — не в этой волне.
+Capability: `xuid-playerdata`. Полный SQL/Redis store в ядре не реализован.
 
 ---
 
@@ -547,11 +546,11 @@ Capability: `xuid-playerdata`. Полный SQL/Redis store — не в этой
 
 Неизвестный тип → `UnknownItem` с сохранённым `SavedItemData`; при записи тип восстанавливается. На клиенте может отображаться как info_update. Стак = 1 (чтобы не склеивать разные unknown).
 
-Capability: `unknown-item`. Unknown **block** palette — Wave 10.
+Capability: `unknown-item`. Unknown **block** palette — .
 
 ---
 
-## Wave 8 — прочность сохранений, tick freeze, metrics
+## Сохранения, tick freeze и метрики
 
 ### Durable small-file save (#48 lite)
 
@@ -564,7 +563,7 @@ world:
     region-fsync: false   # fsync region-файлов только на close (дороже)
 ```
 
-Используется для мелких файлов (конфиги, player.dat path, banlist, install `.phar` и т.п.). LevelDB chunk batches — отдельная история (Wave 10 sidecar).
+Используется для мелких файлов (конфиги, player.dat path, banlist, install `.phar` и т.п.). LevelDB chunk batches — отдельная история .
 
 ---
 
@@ -586,7 +585,7 @@ Capability: `tick-freeze`.
 
 ---
 
-### Prometheus metrics (#52 lite → Wave 10 histograms)
+### Prometheus metrics (#52 lite →  histograms)
 
 **Зачем.** Наблюдаемость TPS/игроков/памяти/миров без сторонних плагинов.
 
@@ -598,13 +597,13 @@ metrics:
 ```
 
 Gauges: TPS, tick usage, players, memory, tick counter, freeze, per-world chunks/entities/tick-ms.  
-Histograms (Wave 10): `pmmp_tick_duration_seconds`, `pmmp_world_tick_duration_seconds` (фиксированные бакеты).
+Histograms : `pmmp_tick_duration_seconds`, `pmmp_world_tick_duration_seconds` (фиксированные бакеты).
 
 Capability: `prometheus-metrics`. Docs: `docs/ops.md`.
 
 ---
 
-## Wave 9 — camera lite и unit-тесты
+## Камера и unit-тесты
 
 ### Camera shake / fade / clear
 
@@ -632,11 +631,11 @@ Unit-тесты без живого Server: `AbuseRateLimiter`, `CrashDumpScrubb
 
 ---
 
-## Wave 10 — закрытие curated leftovers
+## Расширенные возможности ядра
 
 ### Camera full (presets / set / FOV / target)
 
-Расширение Wave 9 до управленя камерой через instruction/presets:
+Расширение  до управленя камерой через instruction/presets:
 
 ```php
 use pocketmine\network\mcpe\protocol\types\camera\CameraPreset;
@@ -739,13 +738,13 @@ Capability: `plugin-security-scan`.
 
 ### TesterPlugin / phpunit (#60)
 
-TesterPlugin на старте прогоняет ClosureTests: script plugin load, capabilities Wave 10, наличие camera-методов на `Player`, SimpleForm serialize.  
-PHPUnit: store / MovementGuard / histogram / security scanner (+ Wave 9 helpers).  
+TesterPlugin на старте прогоняет ClosureTests: script plugin load, capabilities , наличие camera-методов на `Player`, SimpleForm serialize.  
+PHPUnit: store / MovementGuard / histogram / security scanner (+  helpers).  
 Полноценный deterministic gameplay harness (физика матча) — не делался.
 
 ---
 
-## Wave 11 — slices по списку мегапроектов
+## Дополнительные возможности
 
 ### #40 Sandbox hardening lite+
 - `resources/php.ini.recommended` + boot NOTICE если опасные функции ещё доступны
@@ -771,7 +770,7 @@ PHPUnit: store / MovementGuard / histogram / security scanner (+ Wave 9 helpers)
 
 ---
 
-## Wave 12 — polish / lite ops
+## Доработки эксплуатации
 
 ### NetherNet signaling TLS noise
 - Plain-HTTP NOTICE убран: без cert/key — только `debug` (и тишина при `reverse-proxy.enabled`).
@@ -798,7 +797,7 @@ PHPUnit: store / MovementGuard / histogram / security scanner (+ Wave 9 helpers)
 
 ---
 
-## Wave 13 — polish leftovers + camera DSL
+## Камера (DSL) и доработки
 
 ### WorldEdit schematic tiles
 - McEdit `.schematic`: load `TileEntities` via `TileConvertor`.
@@ -822,17 +821,15 @@ PHPUnit: store / MovementGuard / histogram / security scanner (+ Wave 9 helpers)
 
 ---
 
-## Wave 14–16 — max slices + platform close
+## Платформенные ограничения
 
-### Wave 14
 - PM loot tables: `datapacks/<pack>/loot_tables/*.json` → `DatapackLootRegistry::roll()` (+ pack.mcmeta notice).
 - Movement correction sends **real motion** (+ flying as onGround hint); not a physics loop.
 
-### Wave 15
 - Light execute counters in Prometheus (`pmmp_light_*_execute_total`).
 - Anvil **1.13+ paletted section read** (lossy via WE Java→Bedrock); write remains legacy.
 
-### Wave 16 / platform walls (closed)
+###  / platform walls (closed)
 | Тема | Статус |
 |------|--------|
 | OS process sandbox | **wontfix** (PHP) — token scan + open_basedir NOTICE + php.ini.recommended |
@@ -847,11 +844,11 @@ Schematic entity **save / world copy / rotate** still deferred (lite load+paste 
 
 ---
 
-## Wave 17 — Data-Driven UI (DDUI, Bedrock 1.26+)
+## Data-Driven UI (DDUI, Bedrock 1.26+)
 
 **Зачем.** Bedrock 1.26+ умеет экраны с **общим data store**: сервер шлёт `ClientboundDataStoreUpdate`, клиент не закрывает форму. Это замена «открыть JSON CustomForm заново» для чатов, магазинов, опросов с live-полями.
 
-**Чем не заменяет Wave 7 FormAPI.** Классический `CustomForm` + resource pack `server_form_post.json` (двухколоночный MineChat) — по-прежнему **ModalForm + JSON UI**. DDUI Ore UI (`minecraft:custom_form`) и **кастомные `screenId` из RP** — другой путь (см. `docs/DDUI_THEMING.md`).
+**Связь с FormAPI.** Классический `ModalForm` / `CustomForm` через `sendForm()` по-прежнему основной путь для простых форм. DDUI — для реактивных экранов с data store.
 
 ### Включение
 
@@ -866,8 +863,7 @@ ddui:
   default-theme: rubyx:classic
   themes:
     rubyx:postsystem:
-      style-id: minechat:postsystem
-      resource-pack: MineChat_PostSystem
+      style-id: rubyx:classic
 ```
 
 Клиент: **протокол ≥ 1.26.0** (целевой smoke — **1.26.60**). Отключить: `ddui.enabled: false`.
@@ -880,7 +876,6 @@ if($player->supportsDdui()){
     $player->pushDduiClientUpdates($updates); // список DataStoreUpdate
 }
 $player->getDduiProtocolTier(); // full | with_screen_close | base | unsupported
-$player->resolveDduiStyleId('rubyx:postsystem'); // → minechat:postsystem
 ```
 
 Подробно: `docs/plugin-api-ddui.md`, контракт пакетов: `docs/DDUI_WIRE_CONTRACT.md`.
@@ -912,23 +907,17 @@ $player->resolveDduiStyleId('rubyx:postsystem'); // → minechat:postsystem
 - В форме: `DduiLayoutBuilder::applyThemePreset('rubyx:postsystem')` или root `styleId`.
 - Ограничение клиента: стиль в основном **панель / label / textfield**; не дублирует JSON UI PostSystem layout.
 
-Док: `docs/DDUI_THEMING.md`. Пример пака: `resource_packs/MineChat_PostSystem/ddui/styling/minechat_postsystem.json`.
+Док: `docs/DDUI_THEMING.md`.
 
 ### Команда и smoke
 
-- **`/ddui`** (`pocketmine.command.ddui`) — JSON-хаб с переходом на тестовые DDUI-экраны (MessageBox, CustomForm, reactive demo, PostSystem demo, **minechat:postsystem_chat spike**).
+- **`/ddui`** (`pocketmine.command.ddui`) — тестовые DDUI-экраны (MessageBox, CustomForm, reactive demo).
 - Чеклист: `docs/DDUI_MANUAL_SMOKE.md`.
 - PHPUnit: `tests/phpunit/form/ddui/*`.
 
 ### MiniGameBase
 
 `FormManager::sendDduiForm($player, $form, $forceOpen)` — те же правила single-open/cooldown, что у `sendForm()`.
-
-### Кастомный screenId (эксперимент)
-
-- Константа: `DduiScreens::MINECHAT_POSTSYSTEM_CHAT` → `minechat:postsystem_chat`.
-- Spike-форма: `DduiPostSystemChatSpikeForm`; продуктовый контур — плагин **RubyxMessenger** (`MineChatPostSystemScreenForm`, push-сессия).
-- Полный дизайн PostSystem (2 колонки) + push: `docs/MINECHAT_DDUI_POSTSYSTEM_SCREEN.md` (RP screen binding — в работе).
 
 ### Смешивание с JSON-формами
 
@@ -1016,4 +1005,4 @@ $player->resolveDduiStyleId('rubyx:postsystem'); // → minechat:postsystem
 
 ---
 
-*Документ отражает Waves 1–17 + UX `/status` на ветке ядра RubyxGames 5.52 follow-ups (DDUI experimental; platform megaprojects closed as max-slice / wontfix).*
+*Справочник соответствует ядру RubyxGames 1.0.0+ (DDUI — экспериментальная область).*
