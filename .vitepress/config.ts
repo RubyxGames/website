@@ -9,6 +9,7 @@ export default defineConfig({
   description:
     'RubyxGames PocketMine-MP: база документации Axolotl-PM + изменения форка RubyxNet (мультипротокол, DDUI, ops).',
   head: [
+    ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   cleanUrls: true,
@@ -36,7 +37,7 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: { src: '/img/axolotl-logo.svg', alt: 'RubyxGames' },
+    logo: { src: '/img/rubyx-logo.svg', alt: 'RubyxGames' },
     footer: {
       message: footerMessage
     },

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Rubyx">
+  <defs>
+    <linearGradient id="rubyxGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9B1B30"/>
+      <stop offset="45%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#rubyxGrad)" stroke-width="3.2" stroke-linejoin="miter">
+    <path d="M60 10 108 60 60 110 12 60Z"/>
+    <path d="M60 32 86 60 60 88 34 60Z"/>
+    <path d="M60 10v100M12 60h96"/>
+    <path d="M28 28l64 64M92 28 28 92"/>
+  </g>
+</svg>

@@ -71,3 +71,26 @@ html:not(.dark) .dark-only {
 @media (min-width: 960px) {
   .VPHero .hero-logo { max-width: 400px; }
 }
+
+/* Docs landing brand */
+.docs-rubyx-brand {
+  margin: 1.5rem auto 2rem;
+  max-width: 520px;
+}
+
+.rubyx-docs-wordmark {
+  display: block;
+  width: min(100%, 380px);
+  margin: 0 auto 1.25rem;
+  height: auto;
+}
+
+.rubyx-docs-hero {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(225, 29, 72, 0.35);
+  border: 1px solid rgba(255, 107, 53, 0.25);
+}

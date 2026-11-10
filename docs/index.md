@@ -8,8 +8,9 @@ description: User documentation based on Axolotl-PM, plus RubyxGames fork-specif
 Полный текст документации [Axolotl-PM](https://axolotl-pm.org/docs/) перенесён в `/docs/`. Изменения ядра RubyxGames — в разделе **[RubyxGames (fork-specific)](/docs/rubyx/)**.
 :::
 
-<figure class="align-center">
-<img src="/img/axolotl-pm-wordmark.svg" alt="Axolotl-PM">
+<figure class="align-center docs-rubyx-brand">
+<img class="rubyx-docs-wordmark" src="/img/rubyx-wordmark.svg" alt="rubyx.net">
+<img class="rubyx-docs-hero" src="/img/rubyx-brand.jpg" alt="Rubyx brand">
 </figure>
 
 <p class="badges">

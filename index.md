@@ -4,8 +4,8 @@ title: RubyxGames PocketMine-MP
 titleTemplate: false
 
 hero:
-  name: RubyxGames
-  text: Minecraft Bedrock server for RubyxNet
+  name: rubyx.net
+  text: RubyxGames PocketMine-MP
   tagline: Форк PMMP с мультипротоколом, NetherNet и DDUI. Полная пользовательская документация Axolotl-PM плюс изменения Rubyx.
   actions:
     - theme: brand
