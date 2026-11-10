@@ -104,11 +104,11 @@ Path helpers: `DduiPathParser` (MessageBox buttons, CustomForm button slots, `cl
 
 Optional **`DduiFormOnOpen`** — repeating tasks / subscriptions after the screen opens (see `DduiCustomFormReactiveDemo`).
 
-Wire contract: `docs/DDUI_WIRE_CONTRACT.md`.
+Wire contract: [/docs/rubyx/DDUI_WIRE_CONTRACT](/docs/rubyx/DDUI_WIRE_CONTRACT).
 
 ### Themes (phase 1)
 
-Presets in `pocketmine.yml` (`ddui.default-theme`, `ddui.themes`), styles from RP `ddui/styling/*.json`. See **`docs/DDUI_THEMING.md`**.
+Presets in `pocketmine.yml` (`ddui.default-theme`, `ddui.themes`), styles from RP `ddui/styling/*.json`. See **[/docs/rubyx/DDUI_THEMING](/docs/rubyx/DDUI_THEMING)**.
 
 ```php
 $player->getDduiThemeAlias();
@@ -119,4 +119,4 @@ DduiBuiltCustomForm::create("Title")->applyThemePreset($player->getDduiThemeAlia
 
 Test in-game: `/ddui` → **DDUI theme presets**.
 
-Status overview: `docs/DDUI_IMPLEMENTATION_STATUS.md`.
+Status overview: [/docs/rubyx/DDUI_IMPLEMENTATION_STATUS](/docs/rubyx/DDUI_IMPLEMENTATION_STATUS).

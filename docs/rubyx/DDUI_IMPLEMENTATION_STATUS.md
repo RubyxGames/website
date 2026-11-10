@@ -16,7 +16,7 @@ Target: Bedrock **1.26.60**, PocketMine fork `rubyx-server`.
 
 ## Theme API (phase 1)
 
-`DduiThemeRegistry`, `DduiLayoutBuilder::applyThemePreset()`, `/ddui` theme demo — see `docs/DDUI_THEMING.md`.
+`DduiThemeRegistry`, `DduiLayoutBuilder::applyThemePreset()`, `/ddui` theme demo — see [/docs/rubyx/DDUI_THEMING](/docs/rubyx/DDUI_THEMING).
 
 ## Not planned (MVP+)
 

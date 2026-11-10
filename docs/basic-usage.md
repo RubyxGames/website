@@ -1,9 +1,8 @@
 ---
-title: "Basic usage"
+title: Basic usage
 outline: deep
 description: How to start and stop an Axolotl-PM server, use the setup wizard, and keep the server running in the background on Linux or macOS with screen.
 ---
-
 # Basic usage
 
 ## Starting the server
@@ -13,12 +12,12 @@ description: How to start and stop an Axolotl-PM server, use the setup wizard, a
 
 ## Setup Wizard
 
-The first time Axolotl-PM starts, it launches a setup wizard.
+The first time RubyxGames starts, it launches a setup wizard.
 
 The setup wizard will allow you to choose a language, and guide you through setting up basic information about your new server, like its name, the server port, etc.
 
 ::: info Note
-You'll be asked to accept the terms of Axolotl-PM's license.
+You'll be asked to accept the terms of RubyxGames's license.
 You can read the full text of the license on [GitHub](https://github.com/axolotl-pm/PocketMine-MP/blob/master/LICENSE).
 :::
 
@@ -36,7 +35,7 @@ Do NOT click the X to stop the server. You could lose data or your data might ge
 
 ## Running the server in the background (Linux/MacOS only)
 
-If you're using a VPS to host Axolotl-PM, you'll probably want to be able to run the server in the background so that you can keep using your shell, and also be able to get back into the server console later on when reconnecting to the host.
+If you're using a VPS to host RubyxGames, you'll probably want to be able to run the server in the background so that you can keep using your shell, and also be able to get back into the server console later on when reconnecting to the host.
 
 For this purpose, we recommend using the `screen` command. You can usually install it using your OS's package manager (e.g. `apt`) if you don't have it installed.
 
@@ -51,7 +50,7 @@ screen -S pocketmine
 ::: tip Tip
 You can change `pocketmine` to anything you want. This is just an identifier for the screen so you can get back to it later.
 
-If you want to run multiple Axolotl-PM instances, you'll want to start multiple screens and give each one a different identifier.
+If you want to run multiple RubyxGames instances, you'll want to start multiple screens and give each one a different identifier.
 :::
 
 Once inside the screen, you can run `./start.sh` as normal.

@@ -6,6 +6,10 @@ description: Ways to install and update Axolotl-PM with the official installer f
 
 # Installation & Updating
 
+::: tip RubyxGames
+Скачивание phar и прод RubyxNet: [Установка RubyxGames](/docs/rubyx/installation).
+:::
+
 - [Setup requirements](/docs/installation/requirements)
 - [Using the official installer (Linux/MacOS only)](/docs/installation/get-dot-axolotl-pm-dot-org)
 - [Using Docker (Linux only)](/docs/installation/docker)

@@ -1,22 +1,27 @@
+---
+title: Справочник изменений ядра Rubyx
+outline: deep
+---
+
 # Справочник изменений ядра Rubyx
 
 Справочник возможностей ядра RubyxGames: зачем фича, как устроена, как включить и вызывать.
 
 Тематические гайды (если нужна ещё большая глубина по одной теме):
 
-| Файл | Тема |
+| Страница | Тема |
 |------|------|
-| `docs/nethernet.md` | NetherNet / WebRTC |
-| `docs/adaptive-qos.md` | Adaptive QoS |
-| `docs/session-recording.md` | Запись сессий |
-| `docs/resource-packs.md` | Ресурс-паки |
-| `docs/multiworld.md` | Мультимиры |
-| `docs/plugin-api.md` | Плагин-API |
-| `docs/ops.md` | Ops / security / metrics |
-| `docs/plugin-api-ddui.md` | DDUI plugin API |
-| `docs/DDUI_WIRE_CONTRACT.md` | Пакеты / screenId / data store |
-| `docs/DDUI_THEMING.md` | RP `ddui/styling`, Theme API |
-| [changelogs/1.0.0.md](https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md) | Changelog релиза |
+| [nethernet](/docs/rubyx/nethernet) | NetherNet / WebRTC |
+| [adaptive-qos](/docs/rubyx/adaptive-qos) | Adaptive QoS |
+| [session-recording](/docs/rubyx/session-recording) | Запись сессий |
+| [resource-packs](/docs/rubyx/resource-packs) | Ресурс-паки |
+| [multiworld](/docs/rubyx/multiworld) | Мультимиры |
+| [plugin-api](/docs/rubyx/plugin-api) | Плагин-API |
+| [ops](/docs/rubyx/ops) | Ops / security / metrics |
+| [plugin-api-ddui](/docs/rubyx/plugin-api-ddui) | DDUI plugin API |
+| [DDUI_WIRE_CONTRACT](/docs/rubyx/DDUI_WIRE_CONTRACT) | Пакеты / screenId / data store |
+| [DDUI_THEMING](/docs/rubyx/DDUI_THEMING) | RP `ddui/styling`, Theme API |
+| [Changelog 1.0.0](https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md) | Релиз |
 
 ---
 
@@ -84,7 +89,7 @@ transport:
 - Ключ идентичности: `nethernet.key` (создаётся сам). **Бэкапить** — смена ключа заставляет игроков заново подтверждать trust (TOFU).
 - Firewall: TCP signaling (`server-port` / builtin-signaling.port) + UDP ICE range; LAN discovery UDP 7551.
 - STUN в шаблоне есть; для жёсткого NAT нужен TURN.
-- Подробно: `docs/nethernet.md`.
+- Подробно: [/docs/rubyx/nethernet](/docs/rubyx/nethernet).
 
 Capability: `nethernet`.
 
@@ -147,7 +152,7 @@ network:
     check-interval-ticks: 40
 ```
 
-По умолчанию **выключено** — включайте после теста на своей базе. Capability: `adaptive-qos`. Docs: `docs/adaptive-qos.md`.
+По умолчанию **выключено** — включайте после теста на своей базе. Capability: `adaptive-qos`. Docs: [/docs/rubyx/adaptive-qos](/docs/rubyx/adaptive-qos).
 
 ---
 
@@ -176,13 +181,13 @@ session-recording:
 ```
 
 Permission: `pocketmine.command.sessionrecord`. Capability: `session-record`.  
-Это **не** полноценный replay клиента. Docs: `docs/session-recording.md`.
+Это **не** полноценный replay клиента. Docs: [/docs/rubyx/session-recording](/docs/rubyx/session-recording).
 
 ---
 
 ## Resource packs
 
-Конфиг: `resource_packs.yml`. Docs: `docs/resource-packs.md`.
+Конфиг: `resource_packs.yml`. Docs: [/docs/rubyx/resource-packs](/docs/rubyx/resource-packs).
 
 ### World / named stacks
 
@@ -260,7 +265,7 @@ Permission: `pocketmine.command.resourcepacks`.
 
 ## Миры и чанки
 
-Docs: `docs/multiworld.md`. Capabilities: `world-clone`, `multiworld-commands`.
+Docs: [/docs/rubyx/multiworld](/docs/rubyx/multiworld). Capabilities: `world-clone`, `multiworld-commands`.
 
 ### Команды `/world` (alias `/mw`, `/multiworld`) — MultiWorld-модуль в ядре
 
@@ -346,7 +351,7 @@ Spawn-чанки и чанки с viewers/loaders не выгружаются. �
 
 ## Плагины: загрузка и lifecycle
 
-Docs: `docs/plugin-api.md`.
+Docs: [/docs/rubyx/plugin-api](/docs/rubyx/plugin-api).
 
 ### Folder plugins (#28)
 
@@ -399,7 +404,7 @@ plugins:
 
 ## Ops и безопасность
 
-Docs: `docs/ops.md`.
+Docs: [/docs/rubyx/ops](/docs/rubyx/ops).
 
 ### Abuse limits (#39)
 
@@ -536,7 +541,7 @@ Capability: `plugin-data-version`.
 
 Load сначала ищет XUID-файл, потом name. Offline / без XUID — как раньше по имени.
 
-Capability: `xuid-playerdata`. Полный SQL/Redis store в ядре не реализован.
+Capability: `xuid-playerdata`. Полный SQL/Redis store — не в этой волне.
 
 ---
 
@@ -599,7 +604,7 @@ metrics:
 Gauges: TPS, tick usage, players, memory, tick counter, freeze, per-world chunks/entities/tick-ms.  
 Histograms : `pmmp_tick_duration_seconds`, `pmmp_world_tick_duration_seconds` (фиксированные бакеты).
 
-Capability: `prometheus-metrics`. Docs: `docs/ops.md`.
+Capability: `prometheus-metrics`. Docs: [/docs/rubyx/ops](/docs/rubyx/ops).
 
 ---
 
@@ -878,7 +883,7 @@ if($player->supportsDdui()){
 $player->getDduiProtocolTier(); // full | with_screen_close | base | unsupported
 ```
 
-Подробно: `docs/plugin-api-ddui.md`, контракт пакетов: `docs/DDUI_WIRE_CONTRACT.md`.
+Подробно: [/docs/rubyx/plugin-api-ddui](/docs/rubyx/plugin-api-ddui), контракт пакетов: [/docs/rubyx/DDUI_WIRE_CONTRACT](/docs/rubyx/DDUI_WIRE_CONTRACT).
 
 ### Встроенные экраны (vanilla `screenId`)
 
@@ -907,12 +912,12 @@ $player->getDduiProtocolTier(); // full | with_screen_close | base | unsupported
 - В форме: `DduiLayoutBuilder::applyThemePreset('rubyx:postsystem')` или root `styleId`.
 - Ограничение клиента: стиль в основном **панель / label / textfield**; не дублирует JSON UI PostSystem layout.
 
-Док: `docs/DDUI_THEMING.md`.
+Док: [/docs/rubyx/DDUI_THEMING](/docs/rubyx/DDUI_THEMING).
 
 ### Команда и smoke
 
 - **`/ddui`** (`pocketmine.command.ddui`) — тестовые DDUI-экраны (MessageBox, CustomForm, reactive demo).
-- Чеклист: `docs/DDUI_MANUAL_SMOKE.md`.
+- Чеклист: [/docs/rubyx/DDUI_MANUAL_SMOKE](/docs/rubyx/DDUI_MANUAL_SMOKE).
 - PHPUnit: `tests/phpunit/form/ddui/*`.
 
 ### MiniGameBase
@@ -933,7 +938,7 @@ $player->getDduiProtocolTier(); // full | with_screen_close | base | unsupported
 | Builder / темы | `DduiLayoutBuilder.php`, `DduiThemeScanner.php`, `DduiThemeRegistry.php` |
 | Команда | `src/command/defaults/DduiCommand.php` |
 
-Статус внедрения по фазам: `docs/DDUI_IMPLEMENTATION_STATUS.md`.
+Статус внедрения по фазам: [/docs/rubyx/DDUI_IMPLEMENTATION_STATUS](/docs/rubyx/DDUI_IMPLEMENTATION_STATUS).
 
 ---
 

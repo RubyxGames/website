@@ -29,4 +29,4 @@ title: Установка RubyxGames (релизы)
 2. Замена phar и скриптов из нового релиза.
 3. Чтение [changelog 1.0.0](https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md).
 
-Продакшен RubyxNet: см. [ops](/docs/rubyx/ops) и [core-updates](/docs/rubyx/core-updates).
+Продакшен RubyxNet: [ops](/docs/rubyx/ops) и [справочник ядра](/docs/rubyx/core-updates).

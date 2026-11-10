@@ -1,40 +1,55 @@
 ---
-title: RubyxGames — изменения ядра
+title: RubyxGames — документация ядра
 outline: deep
-description: "Документация форка RubyxGames PocketMine-MP — мультипротокол, DDUI, эксплуатация RubyxNet."
+description: "Все страницы по RubyxGames PocketMine-MP: API, DDUI, сеть, эксплуатация."
 ---
 
-# RubyxGames — дополнения к документации
+# RubyxGames — документация ядра
 
-Базовые разделы установки, FAQ и разработки плагинов — в `/docs/`. Здесь — **возможности ядра RubyxGames** и эксплуатация RubyxNet.
+Здесь — **все** материалы, специфичные для форка RubyxGames. Общая установка, FAQ и базовая разработка плагинов — в [/docs/](/docs/).
 
-## Быстрые ссылки
+## Начало
 
-| Тема | Страница |
-|------|----------|
-| Установка с GitHub Releases | [Установка](/docs/rubyx/installation) |
-| Справочник ядра | [core-updates](/docs/rubyx/core-updates) |
-| Plugin API | [plugin-api](/docs/rubyx/plugin-api) |
-| DDUI для плагинов | [plugin-api-ddui](/docs/rubyx/plugin-api-ddui) |
-| Changelog **1.0.0** | [GitHub](https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md) |
+| Страница | О чём |
+|----------|--------|
+| [Установка с релиза](/docs/rubyx/installation) | GitHub Releases, phar, прод |
+| [Справочник изменений ядра](/docs/rubyx/core-updates) | Возможности ядра, capabilities, DDUI |
+| [Changelog 1.0.0](https://github.com/RubyxGames/PocketMine-MP/blob/stable/changelogs/1.0.0.md) | Полный список изменений релиза |
+
+## API для плагинов
+
+| Страница | О чём |
+|----------|--------|
+| [Plugin API](/docs/rubyx/plugin-api) | Forms, camera, movement-guard, datapacks, capabilities |
+| [DDUI plugin API](/docs/rubyx/plugin-api-ddui) | `sendDduiForm`, reactive push, tiers |
 
 ## Эксплуатация
 
-- [ops](/docs/rubyx/ops) — лимиты, health, shutdown
-- [nethernet](/docs/rubyx/nethernet)
-- [multiworld](/docs/rubyx/multiworld)
-- [resource-packs](/docs/rubyx/resource-packs)
-- [adaptive-qos](/docs/rubyx/adaptive-qos)
-- [session-recording](/docs/rubyx/session-recording)
+| Страница | О чём |
+|----------|--------|
+| [Ops](/docs/rubyx/ops) | Abuse-limits, health, drain, metrics |
+| [NetherNet](/docs/rubyx/nethernet) | WebRTC, порты, ключи |
+| [Мультимиры](/docs/rubyx/multiworld) | `/world`, clone |
+| [Resource packs](/docs/rubyx/resource-packs) | Стеки, folder packs, CDN |
+| [Adaptive QoS](/docs/rubyx/adaptive-qos) | Сетевой QoS |
+| [Session recording](/docs/rubyx/session-recording) | Запись сессий |
 
-## DDUI
+## DDUI (Bedrock 1.26+)
 
-- [DDUI_IMPLEMENTATION_STATUS](/docs/rubyx/DDUI_IMPLEMENTATION_STATUS)
-- [DDUI_WIRE_CONTRACT](/docs/rubyx/DDUI_WIRE_CONTRACT)
-- [DDUI_THEMING](/docs/rubyx/DDUI_THEMING)
-- [DDUI_MANUAL_SMOKE](/docs/rubyx/DDUI_MANUAL_SMOKE)
-- [DDUI_BASELINE](/docs/rubyx/DDUI_BASELINE)
+| Страница | О чём |
+|----------|--------|
+| [Статус внедрения](/docs/rubyx/DDUI_IMPLEMENTATION_STATUS) | Фазы, границы MVP |
+| [Wire contract](/docs/rubyx/DDUI_WIRE_CONTRACT) | Пакеты, screenId, data store |
+| [Theming](/docs/rubyx/DDUI_THEMING) | `ddui/styling`, presets |
+| [Manual smoke](/docs/rubyx/DDUI_MANUAL_SMOKE) | Чеклист на клиенте |
+| [Baseline](/docs/rubyx/DDUI_BASELINE) | Версии, протокол, PHPUnit |
 
 ## Внутренности
 
-- [AXOLOTL_NETWORK_AUDIT](/docs/rubyx/AXOLOTL_NETWORK_AUDIT)
+| Страница | О чём |
+|----------|--------|
+| [Сетевой аудит](/docs/rubyx/AXOLOTL_NETWORK_AUDIT) | Сравнение с Axolotl (для ядерщиков) |
+
+::: tip Базовая документация PMMP
+[Установка](/docs/installation), [плагины](/docs/plugins), [NetherNet (общее)](/docs/installation/nethernet-usage), [разработка плагинов](/docs/developers/plugin-docs-index).
+:::
