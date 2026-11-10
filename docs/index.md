@@ -5,9 +5,15 @@ description: Документация ядра RubyxGames PocketMine-MP для M
 ---
 
 <div class="rubyx-pixel-hero-wrap align-center">
-  <h1 class="rubyx-pixel-hero" aria-label="RubyxGames">
-    <span class="rubyx-pixel-ruby">Rubyx</span><span class="rubyx-pixel-games">Games</span>
-  </h1>
+  <img
+    class="rubyx-pixel-hero-img"
+    src="/img/rubyx-pixel-hero.png"
+    alt="RubyxGames"
+    width="554"
+    height="107"
+    loading="eager"
+    decoding="async"
+  />
   <p class="rubyx-pixel-tagline">PocketMine-MP · rubyx.net</p>
 </div>
 
