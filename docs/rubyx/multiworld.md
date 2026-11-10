@@ -1,43 +1,63 @@
-# Multiworld
+---
+title: Мультимиры
+outline: deep
+description: Встроенный модуль MultiWorld в ядре RubyxGames — команды /world, gamerule, клонирование арен.
+---
 
-Built-in MultiWorld module (ported from CzechPMDevs MultiWorld into core). Portal linking is left to plugins.
+# Мультимиры
 
-Capability: `multiworld-module` (+ `multiworld-commands`, `world-clone`).
+В ядре встроен модуль **MultiWorld** (на базе CzechPMDevs MultiWorld). Телепорты между «порталами» по-прежнему делают плагины.
 
-## Commands
+**Capabilities:** `multiworld-module`, `multiworld-commands`, `world-clone`.
 
-Permission: `pocketmine.command.world` (ops by default).
+Связанные темы:
 
-Aliases: `/mw`, `/multiworld`
+- [WorldEdit в ядре](/docs/rubyx/worldedit) — постройка и schematic
+- [Plugin API](/docs/rubyx/plugin-api) — `WorldManager::cloneWorld` и capabilities
 
-| Subcommand | Usage | Description |
-|---|---|---|
-| `list` | `/world list` | Vertical list of all world folders: Loaded/Unloaded, player count, disk size |
-| `create` | `/world create <name> [seed] [generator]` | Generate a new world (`normal`, `flat`, `nether`, `void`, `skyblock`) |
-| `delete` | `/world delete <name>` | Unload (if needed), move players to default, delete folder |
-| `rename` | `/world rename <from> <to>` | Rename folder + LevelName (world must be empty of players) |
-| `load` | `/world load <name>` | Load a world folder |
-| `unload` | `/world unload <name>` | Unload a non-default world |
-| `tp` | `/world tp <world> [player]` | Teleport to world safe spawn (loads if needed) |
-| `clone` / `duplicate` | `/world clone <src> [dest]` | Safe LevelDB copy via `WorldCloner` |
-| `info` | `/world info [name]` | Generator, seed, players, spawn |
-| `update` | `/world update spawn\|lobby\|default ...` | Set spawn / hub / default world |
-| `manage` | `/world manage` | In-game FormAPI UI |
-| `help` | `/world help [page]` | Paginated MultiWorld-style help (`/mw help <page>`) |
+## Команды
+
+Право по умолчанию у операторов: `pocketmine.command.world`.
+
+Псевдонимы: `/mw`, `/multiworld`
+
+| Подкоманда | Пример | Описание |
+|------------|--------|----------|
+| `list` | `/world list` | Список миров: загружен / выгружен, игроки, размер на диске |
+| `create` | `/world create <имя> [seed] [генератор]` | Новый мир: `normal`, `flat`, `nether`, `void`, `skyblock` |
+| `delete` | `/world delete <имя>` | Выгрузка при необходимости, игроки в default, удаление папки |
+| `rename` | `/world rename <откуда> <куда>` | Переименование папки (в мире не должно быть игроков) |
+| `load` | `/world load <имя>` | Загрузить мир с диска |
+| `unload` | `/world unload <имя>` | Выгрузить мир (не default) |
+| `tp` | `/world tp <мир> [игрок]` | Телепорт на safe spawn (при необходимости загрузит мир) |
+| `clone` / `duplicate` | `/world clone <источник> [копия]` | Безопасная копия LevelDB через `WorldCloner` |
+| `info` | `/world info [имя]` | Генератор, seed, игроки, spawn |
+| `update` | `/world update spawn\|lobby\|default …` | Spawn, хаб, default world |
+| `manage` | `/world manage` | Меню в игре (FormAPI) |
+| `help` | `/world help [страница]` | Справка по страницам (`/mw help 2`) |
 
 ### `/gamerule`
 
-Permission: `pocketmine.command.gamerule`
+Право: `pocketmine.command.gamerule`
 
-```
+```text
 /gamerule list
-/gamerule <rule> <jsonValue> [world]
+/gamerule <правило> <jsonValue> [мир]
 ```
 
-Examples: `/gamerule keepInventory true`, `/gamerule pvp false arena`.
+Примеры: `/gamerule keepInventory true`, `/gamerule pvp false arena`.
 
-**Enforced server-side:** `keepInventory`, `doTileDrops`, `naturalRegeneration`, `pvp`, `tntExplodes`.  
-Other listed rules are stored in world NBT (`GameRules` compound) for compatibility.
+**На сервере реально применяются:** `keepInventory`, `doTileDrops`, `naturalRegeneration`, `pvp`, `tntExplodes`.  
+Остальные правила сохраняются в NBT мира (`GameRules`) для совместимости с клиентом.
+
+### `/spawn`
+
+Телепорт на **безопасный spawn мира по умолчанию** (не кровать, не точка spawn текущего мира).
+
+| Команда | Право |
+|---------|--------|
+| `/spawn` | `pocketmine.command.spawn.self` |
+| `/spawn <игрок>` | `pocketmine.command.spawn.other` |
 
 ## API (`WorldManager`)
 
@@ -51,7 +71,7 @@ $wm->getWorldPath("arena");
 $wm->loadWorld("arena");
 $wm->unloadWorld($world);
 $wm->generateWorld("arena", WorldCreationOptions::create()->setSeed(1)->setGeneratorClass(Normal::class));
-$wm->cloneWorld("template", "match_1");
+$wm->cloneWorld("template", "match_1"); // источник без игроков
 $wm->deleteWorld("old_arena");
 $wm->renameWorld("tmp", "arena");
 
@@ -63,12 +83,28 @@ $rules = WorldGameRules::for($world);
 $rules->set("keepInventory", true)->save($world);
 ```
 
-## Configuring worlds
+Типичный сценарий мини-игры: шаблон `template` (пустой или выгруженный) → `cloneWorld` на каждый матч.
 
-Default world name comes from `server.properties` (`level-name`). Additional worlds are folders under `worlds/`.
+## Выгрузка чанков (экономия RAM)
 
-## Notes
+```yaml
+# pocketmine.yml
+chunk-ticking:
+  unload:
+    enabled: true
+    max-chunks-per-tick: 16
+    idle-ticks: 200   # ~10 с при 20 TPS
+```
 
-- Plugin `plugins/MultiWorld` was moved to `plugins_backup/MultiWorld` after core integration.
-- Core registers `skyblock` (lobby / DbD) and lite `ender` (`ender_mw` / `end` aliases). `normal_mw` aliases core `normal` (custom MultiWorld NormalGenerator not ported). Plugin void-overwrite was **not** ported.
-- `/world clone` requires an empty source (no players) for LevelDB safety.
+Чанки со зрителями и spawn не выгружаются. Агрессивнее unload → меньше RAM, но дольше подгрузка при возврате.
+
+## Генераторы
+
+- В ядре зарегистрированы **`skyblock`** (лобби / DbD) и облегчённый **`ender`**.
+- **`void`** — пустая арена без ванильного террейна.
+- Плагин `plugins/MultiWorld` перенесён в `plugins_backup/MultiWorld` — используйте встроенный модуль.
+- `/world clone` требует **пустой источник** (нет игроков) из соображений безопасности LevelDB.
+
+## Настройка
+
+Имя мира по умолчанию — `level-name` в `server.properties`. Остальные миры — папки в `worlds/`.

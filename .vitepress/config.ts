@@ -236,6 +236,7 @@ export default defineConfig({
               { text: 'Ops, health, shutdown', link: '/docs/rubyx/ops' },
               { text: 'NetherNet', link: '/docs/rubyx/nethernet' },
               { text: 'Мультимиры', link: '/docs/rubyx/multiworld' },
+              { text: 'WorldEdit', link: '/docs/rubyx/worldedit' },
               { text: 'Resource packs', link: '/docs/rubyx/resource-packs' },
               { text: 'Adaptive QoS', link: '/docs/rubyx/adaptive-qos' },
               { text: 'Session recording', link: '/docs/rubyx/session-recording' }

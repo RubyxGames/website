@@ -29,7 +29,8 @@ description: "Все страницы по RubyxGames PocketMine-MP: API, DDUI, 
 |----------|--------|
 | [Ops](/docs/rubyx/ops) | Abuse-limits, health, drain, metrics |
 | [NetherNet](/docs/rubyx/nethernet) | WebRTC, порты, ключи |
-| [Мультимиры](/docs/rubyx/multiworld) | `/world`, clone |
+| [Мультимиры](/docs/rubyx/multiworld) | `/world`, clone, gamerule |
+| [WorldEdit](/docs/rubyx/worldedit) | `//` команды, schematic |
 | [Resource packs](/docs/rubyx/resource-packs) | Стеки, folder packs, CDN |
 | [Adaptive QoS](/docs/rubyx/adaptive-qos) | Сетевой QoS |
 | [Session recording](/docs/rubyx/session-recording) | Запись сессий |
