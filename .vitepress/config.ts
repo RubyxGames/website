@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/website/',
   title: 'RubyxGames',
   description:
-    'RubyxGames PocketMine-MP: база документации Axolotl-PM + изменения форка RubyxNet (мультипротокол, DDUI, ops).',
+    'Документация RubyxGames PocketMine-MP для Minecraft Bedrock и RubyxNet.',
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
@@ -118,7 +118,7 @@ export default defineConfig({
               { text: 'Failed loading opcache.so (or other PHP extensions)', link: '/docs/faq/installation/opcache.so' },
               { text: 'PocketMine-MP.phar not found when running server', link: '/docs/faq/installation/pharnotfound' },
               { text: 'Can’t install as user root', link: '/docs/faq/installation/rootuser' },
-              { text: 'Can I install Axolotl-PM on Windows XP?', link: '/docs/faq/installation/windowsxp' }
+              { text: 'Can I install on Windows XP?', link: '/docs/faq/installation/windowsxp' }
             ]
           },
           {
@@ -141,8 +141,8 @@ export default defineConfig({
             link: '/docs/faq/playing',
             collapsed: true,
             items: [
-              { text: 'Why doesn’t X or Y gameplay feature work on Axolotl-PM? Is it a bug?', link: '/docs/faq/playing/missingfeatures' },
-              { text: 'Can Minecraft: Java Edition (PC) clients connect to a Axolotl-PM server?', link: '/docs/faq/playing/playwithpc' }
+              { text: 'Why doesn’t X or Y gameplay feature work? Is it a bug?', link: '/docs/faq/playing/missingfeatures' },
+              { text: 'Can Java Edition clients connect to the server?', link: '/docs/faq/playing/playwithpc' }
             ]
           },
           {
@@ -156,7 +156,7 @@ export default defineConfig({
             ]
           },
           {
-            text: 'About Axolotl-PM',
+            text: 'About PMMP & forks',
             link: '/docs/faq/about',
             collapsed: true,
             items: [
@@ -200,12 +200,12 @@ export default defineConfig({
             ]
           },
           {
-            text: 'Axolotl-PM internal development docs',
+            text: 'Core internal development',
             link: '/docs/developers/internals-docs-index',
             collapsed: true,
             items: [
-              { text: 'How to add a new <em>vanilla</em> block to Axolotl-PM', link: '/docs/developers/internals-docs/adding-vanilla-blocks' },
-              { text: 'Implementing new Minecraft version support in Axolotl-PM', link: '/docs/developers/internals-docs/updating-minecraft-protocol' }
+              { text: 'How to add a new <em>vanilla</em> block', link: '/docs/developers/internals-docs/adding-vanilla-blocks' },
+              { text: 'Implementing new Minecraft version support', link: '/docs/developers/internals-docs/updating-minecraft-protocol' }
             ]
           },
           { text: 'Threading in PHP - WTF?', link: '/docs/developers/threading-in-php-wtf' }

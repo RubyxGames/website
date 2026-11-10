@@ -1,56 +1,45 @@
 ---
-title: "RubyxGames / PocketMine-MP"
+title: RubyxGames PocketMine-MP
 outline: deep
-description: User documentation based on Axolotl-PM, plus RubyxGames fork-specific guides for RubyxNet.
+description: Документация ядра RubyxGames PocketMine-MP для Minecraft Bedrock и RubyxNet.
 ---
-
-::: tip RubyxGames
-Полный текст документации [Axolotl-PM](https://axolotl-pm.org/docs/) перенесён в `/docs/`. Изменения ядра RubyxGames — в разделе **[RubyxGames (fork-specific)](/docs/rubyx/)**.
-:::
 
 <figure class="align-center docs-rubyx-brand">
 <img class="rubyx-docs-wordmark" src="/img/rubyx-wordmark.svg" alt="rubyx.net">
-<img class="rubyx-docs-hero" src="/img/rubyx-brand.jpg" alt="Rubyx brand">
 </figure>
 
 <p class="badges">
-     <a href="https://github.com/RubyxGames/PocketMine-MP/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/RubyxGames/PocketMine-MP?label=RubyxGames&sort=semver"></a>
-     <a href="https://github.com/axolotl-pm/PocketMine-MP/releases/latest"><img alt="Upstream Axolotl" src="https://img.shields.io/github/v/release/axolotl-pm/PocketMine-MP?label=Axolotl+docs+base&sort=semver&color=blue"></a>
+  <a href="https://github.com/RubyxGames/PocketMine-MP/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/RubyxGames/PocketMine-MP?label=RubyxGames&sort=semver&color=red"></a>
 </p>
 
 <div class="center">
 
-[Rubyx Releases](https://github.com/RubyxGames/PocketMine-MP/releases) • [Rubyx-specific docs](/docs/rubyx/) • [Axolotl upstream](https://github.com/axolotl-pm/PocketMine-MP)
+[Скачать релиз](https://github.com/RubyxGames/PocketMine-MP/releases) • [Изменения Rubyx](/docs/rubyx/) • [Исходники](https://github.com/RubyxGames/PocketMine-MP)
 
 </div>
 
-This site ships the **Axolotl-PM user manual** (below) and **RubyxGames** additions. Axolotl-PM is a highly customisable server software for Minecraft: Bedrock Edition, built from scratch in PHP, with over 10 years of history.
+**RubyxGames PocketMine-MP** — серверное ПО для Minecraft: Bedrock Edition под кастомные режимы (лобби, мини-игры, плагины), форк линии PMMP с мультипротоколом, NetherNet и расширениями для RubyxNet.
 
-If you're looking to create a Minecraft: Bedrock server with **custom functionality**, look no further.
+Если вам нужен сервер с **своей логикой**, а не ванильный survival — начните ниже.
 
-- 🧩 **Powerful plugin API** - extend and customise gameplay as you see fit
-- 🗺️ **Rich ecosystem** and **large developer community** - find plugins easily and learn to develop your own
-- 🌐 **Multi-world support** - offer a more varied game experience to players without transferring them to other server nodes
-- 🏎️ **Performance** - get 100+ players onto one server (depending on hardware and plugins)
-- ⤴️ **Continuously updated** - new Minecraft versions are usually supported within days
+- 🧩 **API плагинов** — расширяйте геймплей под свой проект
+- 🌐 **Несколько версий клиента** на одном процессе (см. [Rubyx core-updates](/docs/rubyx/core-updates))
+- 🔌 **NetherNet и RakNet** — [установка](/docs/rubyx/installation), [эксплуатация](/docs/rubyx/nethernet)
+- 🖥️ **DDUI, ops, метрики** — раздел [RubyxGames](/docs/rubyx/)
+- ⤴️ **Релизы** на [GitHub](https://github.com/RubyxGames/PocketMine-MP/releases)
 
-::: info Note
-**Axolotl-PM is NOT a vanilla Minecraft server software.**
-It is poorly suited to hosting vanilla survival servers.
-It doesn't have many features from the vanilla game, such as vanilla world generation, redstone, mob AI, and various other things.
+::: info Примечание
+**RubyxGames — не ванильный survival.** Нет полноценной ванильной генерации, редстоуна, ИИ мобов и многого другого из офлайн Bedrock.
 
-If you just want to play **vanilla survival multiplayer**, consider using the [official Minecraft: Bedrock server software](https://minecraft.net/download/server/bedrock) instead of Axolotl-PM.
+Для ванильного SMP лучше [официальный Bedrock dedicated server](https://minecraft.net/download/server/bedrock).
 
-If that's not an option for you, you may be able to add some of Axolotl-PM's missing features using plugins from [Poggit](https://poggit.pmmp.io/plugins), or write plugins to implement them yourself.
+Часть механик можно добрать плагинами или своей разработкой.
 :::
 
-::: warning Warning
-Poggit is now read-only. Existing plugins can still be found there, but no new plugins or updates are being published.
-:::
+**Начало работы**
 
-**Getting Started**
-
-- [Installation & Updating](/docs/installation)
+- [Установка RubyxGames](/docs/rubyx/installation)
+- [Installation & Updating](/docs/installation) (общие шаги PHP, порты, NetherNet)
 - [Migrating from PocketMine-MP (PMMP)](/docs/migrating-from-pocketmine-mp)
 - [Basic usage](/docs/basic-usage)
 - [Connecting](/docs/connecting)
@@ -63,16 +52,18 @@ Poggit is now read-only. Existing plugins can still be found there, but no new p
 - [Bugs & Crashes](/docs/issues)
 - [Contact and Support](/docs/contact)
 
-**Frequently Asked Questions & Common Issues**
+**FAQ**
 
 - [Installation](/docs/faq/installation)
 - [Connecting](/docs/faq/connecting)
 - [Playing](/docs/faq/playing)
 - [Plugins](/docs/faq/plugins)
-- [About Axolotl-PM](/docs/faq/about)
+- [About PMMP & forks](/docs/faq/about)
 
-**Developer Resources**
+**Разработчикам**
 
 - [Plugin development docs](/docs/developers/plugin-docs-index)
-- [Axolotl-PM internal development docs](/docs/developers/internals-docs-index)
+- [Core / internals](/docs/developers/internals-docs-index)
 - [Threading in PHP - WTF?](/docs/developers/threading-in-php-wtf)
+
+Источник части страниц и лицензия upstream — в [ATTRIBUTION](/docs/ATTRIBUTION).

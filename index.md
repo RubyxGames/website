@@ -6,7 +6,7 @@ titleTemplate: false
 hero:
   name: rubyx.net
   text: RubyxGames PocketMine-MP
-  tagline: Форк PMMP с мультипротоколом, NetherNet и DDUI. Полная пользовательская документация Axolotl-PM плюс изменения Rubyx.
+  tagline: Ядро Minecraft Bedrock для RubyxNet — мультипротокол, NetherNet, DDUI и эксплуатация в проде.
   actions:
     - theme: brand
       text: Documentation
@@ -19,8 +19,8 @@ hero:
       link: https://github.com/RubyxGames/PocketMine-MP/releases/latest
 
 features:
-  - title: Axolotl-PM docs included
-    details: Installation, FAQ, plugins, worlds — full copy of axolotl-pm.org/docs
+  - title: Полная документация
+    details: Установка, FAQ, плагины, миры — руководство оператора и разработчика
   - title: Multi-protocol Bedrock
     details: Several client versions on one server (Rubyx 1.0.0+)
   - title: NetherNet & RakNet
