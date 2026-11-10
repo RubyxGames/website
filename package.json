@@ -1,0 +1,22 @@
+{
+  "name": "rubyx-docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "sync:axolotl-docs": "git -C /tmp/axolotl-website pull 2>/dev/null || git clone --depth 1 https://github.com/axolotl-pm/website.git /tmp/axolotl-website; rsync -a --delete --exclude rubyx --exclude ATTRIBUTION.md /tmp/axolotl-website/docs/ ./docs/ && cp -a ../rubyx-server/docs/. ./docs/rubyx/"
+  },
+  "packageManager": "pnpm@11.24.0",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "devDependencies": {
+    "@catppuccin/vitepress": "^0.1.4",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-tabs": "^0.9.1",
+    "vue": "^3.5.43"
+  }
+}
