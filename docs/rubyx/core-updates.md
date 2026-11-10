@@ -291,13 +291,7 @@ Permission: `pocketmine.command.world` (обычно ops).
 
 Бывший плагин EasyEdit (`plugins/WorldEdit`) встроен в ядро:
 
-- код: `src/world/worldedit/` (`pocketmine\world\worldedit`)
-- ресурсы: `resources/worldedit/`
-- данные: `plugin_data/WorldEdit/` (миграция с `plugin_data/EasyEdit` при старте)
-- permissions: `worldedit.*`
-- команды игрока без изменений: `//wand`, `//set`, `//copy`, `//paste`, …
-- бэкап плагина: `plugins_backup/WorldEdit`
-- capability: `worldedit`
+Подробно: [WorldEdit в ядре](/docs/rubyx/worldedit). Capability: `worldedit`.
 
 ### Команда `/spawn`
 
