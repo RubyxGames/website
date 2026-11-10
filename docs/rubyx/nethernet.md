@@ -1,52 +1,63 @@
-# NetherNet setup (Axolotl / Rubyx)
+---
+title: NetherNet
+outline: deep
+description: WebRTC-транспорт Bedrock, порты, ключи и TLS — RubyxGames PocketMine-MP.
+---
 
-NetherNet is the WebRTC transport Minecraft: Bedrock uses instead of RakNet (RakNet removed on clients from 1.26.60 / v26.60).
+# NetherNet (WebRTC)
 
-## Requirements
+NetherNet — транспорт Minecraft: Bedrock на **WebRTC** вместо RakNet (на клиентах с 1.26.60 RakNet убран).
 
-1. PHP binary with `ext-webrtc` from [axolotl-pm/PHP-Binaries](https://github.com/axolotl-pm/PHP-Binaries).
-2. `transport.name` in `pocketmine.yml` includes `nethernet` (default template: `nethernet,raknet`).
-3. Open firewall / port-forward:
-   - **TCP** signaling port (`server-port` from `server.properties`, or `transport.nethernet.builtin-signaling.port`)
-   - **UDP** ICE media ports (`transport.nethernet.port-range`, or ephemeral if empty)
-   - LAN discovery uses **UDP 7551** when builtin signaling is enabled
+Подробнее в общей доке: [NetherNet (установка)](/docs/installation/nethernet-usage). Здесь — эксплуатация на Rubyx.
 
-If `ext-webrtc` is missing, the server logs that NetherNet was skipped and continues with other transports (e.g. RakNet).
+## Требования
 
-## Identity key
+1. PHP с **`ext-webrtc`** ([axolotl-pm/PHP-Binaries](https://github.com/axolotl-pm/PHP-Binaries) или сборка RubyxGames).
+2. В `pocketmine.yml` в `transport.name` есть `nethernet` (шаблон: `nethernet` или `nethernet,raknet`).
+3. Firewall / проброс портов:
+   - **TCP** — signaling (`server-port` из `server.properties` или `transport.nethernet.builtin-signaling.port`)
+   - **UDP** — ICE media (`transport.nethernet.port-range` или эфемерные порты)
+   - **UDP 7551** — LAN discovery при встроенном signaling
 
-`transport.nethernet.key-file` (default `nethernet.key`) is created on first start.
+Без `ext-webrtc` сервер пишет, что NetherNet пропущен, и продолжает на других транспортах (например RakNet).
 
-- **Back it up.** Changing or deleting it makes returning players confirm trust again (TOFU).
-- Permissions should stay `0600`.
+## Ключ идентичности
+
+`transport.nethernet.key-file` (по умолчанию `nethernet.key`) создаётся при первом старте.
+
+- **Сохраните бэкап.** Смена ключа заставит игроков снова подтверждать доверие (TOFU).
+- Права на файл: `0600`.
 
 ## STUN / TURN
 
-Default template includes a public STUN server for basic NAT traversal.
+В шаблоне есть публичный STUN для простого NAT.
 
-- STUN is often enough for home / light NAT.
-- Symmetric NAT / CGNAT / some mobile networks need a **TURN** server (`type: turn` with username/password).
-- Do not enable `ice-udp-mux` together with TURN.
+- STUN часто хватает дома / лёгкого NAT.
+- Симметричный NAT, CGNAT, мобильные сети — нужен **TURN** (`type: turn` с логином/паролем).
+- Не включайте `ice-udp-mux` вместе с TURN.
 
-## TLS and reverse proxy
+## TLS и reverse proxy
 
-Plain HTTP signaling triggers a client trust dialog on first join. The server no longer emits a boot NOTICE for plain HTTP (debug only; silent when `reverse-proxy.enabled`).
+Plain HTTP signaling при первом входе вызывает диалог доверия. Boot-**NOTICE** для plain HTTP убран (только debug; тишина при `reverse-proxy.enabled`).
 
-For production:
+Продакшен:
 
-1. Put Caddy/Nginx/Cloudflare in front of the signaling TCP port with a valid certificate, **or** set `transport.nethernet.builtin-signaling.tls.certificate` / `key`.
-2. If using a reverse proxy, set `reverse-proxy.enabled: true`, the forwarded IP header, and `trusted-ips`.
+1. Caddy/Nginx/Cloudflare перед TCP signaling с валидным сертификатом, **или**  
+   `transport.nethernet.builtin-signaling.tls.{certificate,key,passphrase}`
+2. При reverse proxy: `reverse-proxy.enabled: true`, заголовок forwarded IP, `trusted-ips`.
 
-## Dual transport migration
+## Два транспорта (миграция)
 
-Default `transport.name` is **`nethernet` only**. Set `name: nethernet,raknet` while older clients or tooling still need RakNet. Query has a dedicated UDP path when RakNet is off.
+По умолчанию `transport.name` — **`nethernet`**. Для старых клиентов: `nethernet,raknet`. Query использует отдельный UDP-путь, когда RakNet выключен.
 
-## Transfer between servers
+## Transfer между серверами
 
-`Player::transfer($host, $port)` still sends a Bedrock `TransferPacket`.
+`Player::transfer($host, $port)` шлёт Bedrock `TransferPacket`.
 
-For NetherNet destinations, `$host` / `$port` should target the **signaling** endpoint of the destination (TCP), matching how the client joins that server. Full seamless WebRTC handoff beyond host:port is not covered here.
+Для NetherNet назначение — **signaling** (TCP) целевого сервера, как при обычном join. Полный seamless WebRTC handoff только по host:port здесь не расписан.
 
-## Related config
+## Конфиг
 
-See the `transport:` section in `resources/pocketmine.yml` and your live `pocketmine.yml`.
+Секция `transport:` в `resources/pocketmine.yml` и вашем `pocketmine.yml`.
+
+Capability: `nethernet`.

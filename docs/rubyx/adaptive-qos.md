@@ -1,8 +1,14 @@
+---
+title: Adaptive QoS
+outline: deep
+description: Снижение view distance при высоком ping — RubyxGames PocketMine-MP.
+---
+
 # Adaptive QoS
 
-When a player's smoothed (EWMA) ping is high, the server temporarily lowers their **view distance** so fewer chunks/entities are sent. This is meant to reduce rubberbanding on weak links.
+При высоком сглаженном (EWMA) ping сервер временно **уменьшает дальность прорисовки** игрока — меньше чанков и сущностей в сети, меньше rubberband на слабых каналах.
 
-## Config (`pocketmine.yml`)
+## Конфиг (`pocketmine.yml`)
 
 ```yaml
 network:
@@ -17,15 +23,19 @@ network:
     check-interval-ticks: 40
 ```
 
-- **soft** tier: ping ≥ `ping-soft-ms` → cap at `soft-view-distance`
-- **hard** tier: ping ≥ `ping-hard-ms` → cap at `hard-view-distance`
-- Recovery uses `recover-ms` hysteresis so distance does not flap every tick
-- Never raises distance above what the client/plugin requested or what memory limits allow
+| Уровень | Условие | Действие |
+|---------|---------|----------|
+| soft | ping ≥ `ping-soft-ms` | cap `soft-view-distance` |
+| hard | ping ≥ `ping-hard-ms` | cap `hard-view-distance` |
 
-## Behaviour
+Восстановление с гистерезисом `recover-ms`, чтобы дистанция не дёргалась каждый тик. QoS **никогда** не поднимает дистанцию выше запроса клиента/плагина и лимитов памяти.
 
-1. Client requests radius → stored as desired distance.
-2. QoS may apply a lower effective distance via `Player::applyQosViewDistance()`.
-3. When ping recovers, effective distance returns toward the desired value.
+## Поведение
 
-Disabled by default. Enable only after testing on your player base.
+1. Клиент запрашивает радиус → сохраняется как желаемая дистанция.
+2. QoS может снизить эффективную дистанцию через `Player::applyQosViewDistance()`.
+3. При улучшении ping — возврат к желаемому значению.
+
+По умолчанию **выключено**. Включайте после теста на своей аудитории.
+
+Capability: `adaptive-qos`.

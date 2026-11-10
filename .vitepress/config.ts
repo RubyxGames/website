@@ -233,13 +233,15 @@ export default defineConfig({
             text: 'Эксплуатация',
             collapsed: true,
             items: [
-              { text: 'Ops, health, shutdown', link: '/docs/rubyx/ops' },
+              { text: 'Сервис и метрики', link: '/docs/rubyx/ops' },
               { text: 'NetherNet', link: '/docs/rubyx/nethernet' },
               { text: 'Мультимиры', link: '/docs/rubyx/multiworld' },
               { text: 'WorldEdit', link: '/docs/rubyx/worldedit' },
               { text: 'Resource packs', link: '/docs/rubyx/resource-packs' },
+              { text: 'Плагины (folder, reload)', link: '/docs/rubyx/plugins-ops' },
+              { text: 'Datapacks', link: '/docs/rubyx/datapacks' },
               { text: 'Adaptive QoS', link: '/docs/rubyx/adaptive-qos' },
-              { text: 'Session recording', link: '/docs/rubyx/session-recording' }
+              { text: 'Запись сессий', link: '/docs/rubyx/session-recording' }
             ]
           },
           {

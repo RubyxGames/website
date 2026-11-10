@@ -1,58 +1,66 @@
+---
+title: Resource packs
+outline: deep
+description: Стеки, CDN, шифрование и hot-reload ресурс-паков — RubyxGames.
+---
+
 # Resource packs
 
-## Formats
+## Форматы
 
 - `.zip` / `.mcpack`
-- Folder with `manifest.json` (auto-zipped into `compress_cache_dir`)
+- Папка с `manifest.json` (сжимается в `compress_cache_dir`)
 
-Originals under `resource_packs/` are never modified.
+Исходники в `resource_packs/` **не** перезаписываются.
 
-## Stacks
+## Стеки
 
-`resource_stack` is the global default.
+`resource_stack` — глобальный стек по умолчанию.
 
-**World stacks** (`world_stacks.<folder>`): at login the server offers the stack for the **default world** folder name if configured; otherwise the global stack. Plugins can use `ResourcePackManager::getResourceStackForWorld()` / `getNamedStack()`.
+**Стеки миров** (`world_stacks.<папка>`): при логине отдаётся стек **default world**, если настроен; иначе глобальный. Плагины: `ResourcePackManager::getResourceStackForWorld()` / `getNamedStack()`.
 
-**Important:** Bedrock cannot hot-swap resource packs mid-session. After `/resourcepacks reload` or a world transfer, players must **reconnect** to receive a different stack.
+**Важно:** Bedrock **не** меняет resource packs в активной сессии. После `/resourcepacks reload` или transfer игроку нужен **реконнект**.
 
 ## CDN (#10)
 
 ```yaml
 cdn_urls:
-  <pack-uuid-or-filename>: "https://cdn.example.com/pack.zip"
+  <pack-uuid-или-имя-файла>: "https://cdn.example.com/pack.zip"
 ```
 
-URLs are sent in `ResourcePacksInfoPacket`. Keep local packs for clients that fall back to chunk download. Plugins may override URLs via `PlayerResourcePackOfferEvent::setCdnUrls()`.
+URL уходят в `ResourcePacksInfoPacket`. Локальные копии оставляйте для fallback chunk-download. Плагины: `PlayerResourcePackOfferEvent::setCdnUrls()`.
 
-## Unchanged packs / client cache (#11)
+## Кэш клиента (#11)
 
-There is no custom binary-diff protocol. Clients skip re-download when pack **UUID + version** match what they already have.
+Нет кастомного binary-diff. Клиент **не** качает заново, если **UUID + version** совпали.
 
-- Folder/zip compression cache invalidates on file stamp changes.
-- On reload, the server logs when a pack's uuid|version|sha256 fingerprint changed.
-- For tiny texture edits: bump the pack **version** in `manifest.json` when you want clients to re-download; keep the same UUID.
+- Кэш сжатия folder/zip сбрасывается при изменении stamp файлов.
+- При reload сервер логирует смену fingerprint `uuid|version|sha256`.
+- Мелкие правки текстур: поднимите **version** в `manifest.json`, UUID можно оставить.
 
-`ResourcePackManager::getPackContentFingerprint(ResourcePack)` returns `uuid|version|sha256hex`.
+`ResourcePackManager::getPackContentFingerprint(ResourcePack)` → `uuid|version|sha256hex`.
 
-## Encryption (#13)
+## Шифрование (#13)
 
-- Place `<pack>.key` next to the pack (exactly **32 bytes**), or:
+- Файл `<pack>.key` рядом с паком (**ровно 32 байта**), или:
   ```yaml
   resource_stack:
     - pack: secret.zip
       key_file: secret.zip.key
   ```
-- Successful encrypted packs log `Encrypted resource pack "..." (uuid=...)`.
-- If a `.key` exists but the pack fails to load, a warning is logged.
+- Успешная загрузка зашифрованного пака логируется.
+- Если `.key` есть, а пак не грузится — warning в лог.
 
 ## Hot-reload (#14)
 
-```
+```text
 /resourcepacks reload
 ```
 
-Permission: `pocketmine.command.resourcepacks`. Reloads YAML + packs in place. Online players are not updated until they reconnect.
+Право: `pocketmine.command.resourcepacks`. Перечитывает YAML и паки; онлайн-игроки обновятся только после реконнекта.
 
-## Send tuning
+## Отдача чанками
 
-`pack_chunk_size_kb` and `pack_chunk_concurrency` control how pack bytes are streamed to the client.
+`pack_chunk_size_kb` и `pack_chunk_concurrency` — размер и параллелизм потоковой отдачи пакета клиенту.
+
+Capability: `folder-packs`.

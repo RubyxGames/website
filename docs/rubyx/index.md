@@ -27,13 +27,15 @@ description: "Все страницы по RubyxGames PocketMine-MP: API, DDUI, 
 
 | Страница | О чём |
 |----------|--------|
-| [Ops](/docs/rubyx/ops) | Abuse-limits, health, drain, metrics |
-| [NetherNet](/docs/rubyx/nethernet) | WebRTC, порты, ключи |
-| [Мультимиры](/docs/rubyx/multiworld) | `/world`, clone, gamerule |
+| [Сервис и метрики](/docs/rubyx/ops) | Health, drain, Prometheus, tick freeze |
+| [NetherNet](/docs/rubyx/nethernet) | WebRTC, TLS, порты, ключи |
+| [Мультимиры](/docs/rubyx/multiworld) | `/world`, clone, `/spawn`, gamerule |
 | [WorldEdit](/docs/rubyx/worldedit) | `//` команды, schematic |
-| [Resource packs](/docs/rubyx/resource-packs) | Стеки, folder packs, CDN |
-| [Adaptive QoS](/docs/rubyx/adaptive-qos) | Сетевой QoS |
-| [Session recording](/docs/rubyx/session-recording) | Запись сессий |
+| [Resource packs](/docs/rubyx/resource-packs) | Стеки, CDN, шифрование, reload |
+| [Плагины (folder, reload)](/docs/rubyx/plugins-ops) | Папки, `/plugin reload`, install |
+| [Datapacks](/docs/rubyx/datapacks) | Рецепты и item tags на диске |
+| [Adaptive QoS](/docs/rubyx/adaptive-qos) | View distance по ping |
+| [Session recording](/docs/rubyx/session-recording) | JSONL для разбора инцидентов |
 
 ## DDUI (Bedrock 1.26+)
 

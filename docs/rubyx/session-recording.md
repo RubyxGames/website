@@ -1,4 +1,10 @@
-# Session Recorder
+---
+title: Запись сессий
+outline: deep
+description: Session Recorder — JSONL-события для разбора жалоб и forensics.
+---
+
+# Запись сессий
 
 Запись игровой сессии в append-only **JSONL** для разбора жалоб, forensics и лёгкого anticheat-aid.
 
