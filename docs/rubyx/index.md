@@ -56,3 +56,7 @@ description: "Все страницы по RubyxGames PocketMine-MP: API, DDUI, 
 ::: tip Базовая документация PMMP
 [Установка](/docs/installation), [плагины](/docs/plugins), [NetherNet (общее)](/docs/installation/nethernet-usage), [разработка плагинов](/docs/developers/plugin-docs-index).
 :::
+
+::: tip Blueprint
+Визуальная IDE мини-игр: [раздел Blueprint](/docs/blueprint/) · [полная документация](/docs/blueprint/guide).
+:::

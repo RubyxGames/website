@@ -15,6 +15,9 @@ hero:
       text: Rubyx
       link: /docs/rubyx/
     - theme: alt
+      text: Blueprint
+      link: /docs/blueprint/
+    - theme: alt
       text: Скачать
       link: https://github.com/RubyxGames/PocketMine-MP/releases/latest
 
@@ -27,4 +30,6 @@ features:
     details: WebRTC и совместимость со старыми клиентами
   - title: DDUI и ops
     details: UI плагинов, метрики, session recording, чеклисты
+  - title: Blueprint
+    details: Визуальные графы мини-игр → PHP-плагин на MiniGameBase
 ---
