@@ -7,7 +7,7 @@
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "sync:axolotl-docs": "git -C /tmp/axolotl-website pull 2>/dev/null || git clone --depth 1 https://github.com/axolotl-pm/website.git /tmp/axolotl-website; rsync -a --delete --exclude rubyx --exclude ATTRIBUTION.md /tmp/axolotl-website/docs/ ./docs/ && cp -a ../rubyx-server/docs/. ./docs/rubyx/"
+    "sync:axolotl-docs": "git -C /tmp/axolotl-website pull 2>/dev/null || git clone --depth 1 https://github.com/axolotl-pm/website.git /tmp/axolotl-website; rsync -a --delete --exclude rubyx --exclude blueprint --exclude ATTRIBUTION.md /tmp/axolotl-website/docs/ ./docs/ && cp -a ../rubyx-server/docs/. ./docs/rubyx/"
   },
   "packageManager": "pnpm@11.24.0",
   "pnpm": {

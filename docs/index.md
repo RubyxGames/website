@@ -35,6 +35,7 @@ description: Документация ядра RubyxGames PocketMine-MP для M
 - 🌐 **Несколько версий клиента** на одном процессе (см. [обновления ядра](/docs/rubyx/core-updates))
 - 🔌 **NetherNet и RakNet** — [установка](/docs/rubyx/installation), [эксплуатация](/docs/rubyx/nethernet)
 - 🖥️ **DDUI, ops, метрики** — раздел [RubyxGames](/docs/rubyx/)
+- 🧩 **Blueprint** — визуальные графы мини-игр на MiniGameBase: [раздел Blueprint](/docs/blueprint/)
 - ⤴️ **Релизы** на [GitHub](https://github.com/RubyxGames/PocketMine-MP/releases)
 
 ::: info Примечание
@@ -74,5 +75,6 @@ description: Документация ядра RubyxGames PocketMine-MP для M
 - [Документация по плагинам](/docs/developers/plugin-docs-index)
 - [Внутренности ядра](/docs/developers/internals-docs-index)
 - [Threading in PHP — WTF?](/docs/developers/threading-in-php-wtf)
+- [RUBYX Blueprint](/docs/blueprint/) — графы → PHP-плагин MiniGameBase
 
 Источник части страниц — [ATTRIBUTION](/docs/ATTRIBUTION).

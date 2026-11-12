@@ -51,6 +51,17 @@ export default defineConfig({
       { text: 'Главная', link: '/' },
       { text: 'Документация', link: '/docs' },
       { text: 'Rubyx', link: '/docs/rubyx/' },
+      {
+        text: 'Blueprint',
+        activeMatch: '/docs/blueprint',
+        items: [
+          { text: 'Обзор', link: '/docs/blueprint/' },
+          { text: 'Полная документация', link: '/docs/blueprint/guide' },
+          { text: 'Каталог узлов', link: '/docs/blueprint/nodes' },
+          { text: 'Шаблоны', link: '/docs/blueprint/templates' },
+          { text: 'Vs Unreal Engine', link: '/docs/blueprint/ue-gap' }
+        ]
+      },
       { text: 'Релизы', link: 'https://github.com/RubyxGames/PocketMine-MP/releases' }
     ],
     docFooter: { prev: 'Назад', next: 'Далее' },
@@ -59,7 +70,31 @@ export default defineConfig({
     sidebarMenuLabel: 'Меню',
     darkModeSwitchLabel: 'Тема',
 
-    sidebar: [
+    sidebar: {
+      '/docs/blueprint/': [
+        {
+          text: 'RUBYX Blueprint',
+          items: [
+            { text: 'Обзор', link: '/docs/blueprint/' },
+            { text: 'Полная документация', link: '/docs/blueprint/guide' },
+            { text: 'Каталог узлов', link: '/docs/blueprint/nodes' },
+            { text: 'Шаблоны', link: '/docs/blueprint/templates' },
+            { text: 'Компилятор', link: '/docs/blueprint/compiler' },
+            { text: 'Архитектура', link: '/docs/blueprint/architecture' },
+            { text: 'Формат .rbxblueprint', link: '/docs/blueprint/format' },
+            { text: 'Vs Unreal Engine', link: '/docs/blueprint/ue-gap' }
+          ]
+        },
+        {
+          text: 'Связанное',
+          items: [
+            { text: 'RubyxGames ядро', link: '/docs/rubyx/' },
+            { text: 'Разработка плагинов', link: '/docs/developers/plugin-docs-index' },
+            { text: 'Вся документация', link: '/docs/' }
+          ]
+        }
+      ],
+      '/docs/': [
       {
         text: 'Начало работы',
         items: [
@@ -214,7 +249,19 @@ export default defineConfig({
               { text: 'Новая версия Minecraft', link: '/docs/developers/internals-docs/updating-minecraft-protocol' }
             ]
           },
-          { text: 'Threading in PHP — WTF?', link: '/docs/developers/threading-in-php-wtf' }
+          { text: 'Threading in PHP — WTF?', link: '/docs/developers/threading-in-php-wtf' },
+          {
+            text: 'Blueprint (мини-игры)',
+            link: '/docs/blueprint/',
+            collapsed: true,
+            items: [
+              { text: 'Обзор', link: '/docs/blueprint/' },
+              { text: 'Полная документация', link: '/docs/blueprint/guide' },
+              { text: 'Каталог узлов', link: '/docs/blueprint/nodes' },
+              { text: 'Шаблоны', link: '/docs/blueprint/templates' },
+              { text: 'Vs Unreal Engine', link: '/docs/blueprint/ue-gap' }
+            ]
+          }
         ]
       },
       {
@@ -255,10 +302,12 @@ export default defineConfig({
               { text: 'Baseline', link: '/docs/rubyx/DDUI_BASELINE' }
             ]
           },
-          { text: 'Сетевой аудит', link: '/docs/rubyx/AXOLOTL_NETWORK_AUDIT' }
+          { text: 'Сетевой аудит', link: '/docs/rubyx/AXOLOTL_NETWORK_AUDIT' },
+          { text: 'Blueprint', link: '/docs/blueprint/' }
         ]
       }
-    ],
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/RubyxGames/PocketMine-MP' }
